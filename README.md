@@ -1,21 +1,21 @@
 # Data Structure and Algorithm in Javascript
 
 ## Set up
-git clone https://github.com/charlie-lyc/data_structure_algorithm_js.git<br>
-npm install<br>
+`git clone https://github.com/charlie-lyc/data_structure_algorithm_js.git`
+`npm install`
 
 ## Test all cases
-npm run test<br>
+`npm run test`
 
 ## Test each case
-npm run test:stack<br>
-npm run test:queue<br>
-npm run test:priorityQueue<br>
-npm run test:set<br>
-npm run test:linkedList<br>
-npm run test:binaryTree<br>
-npm run test:tree<br>
-npm run test:trie<br>
-npm run test:minHeap<br>
-npm run test:maxHeap<br>
-npm run test:graph<br>
+`npm run test:stack`
+`npm run test:queue`
+`npm run test:priorityQueue`
+`npm run test:set`
+`npm run test:linkedList`
+`npm run test:binaryTree`
+`npm run test:tree`
+`npm run test:trie`
+`npm run test:minHeap`
+`npm run test:maxHeap`
+`npm run test:graph`
