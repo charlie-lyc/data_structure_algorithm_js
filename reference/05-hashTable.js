@@ -14,10 +14,6 @@ const hashFunction = (string, max) => {
 //     let storage = []
 //     let storageLimit = limit
 //
-//     this.print = () => {
-//         return storage
-//     }
-//
 //     this.insert = (key, value) => {
 //         const index = hashFunction(key, storageLimit)
 //         if (storage[index] === undefined) {
@@ -101,9 +97,6 @@ class HashTable {
         this.storage = []
         this.storageLimit = limit
     }
-    print() {
-        return this.storage
-    }
     insert(key, value) {
         const index = hashFunction(key, this.storageLimit)
         if (this.storage[index] === undefined) {
@@ -183,14 +176,14 @@ console.log(hashFunction('beautiful', 4))
 const hashTable = new HashTable(4)
 hashTable.insert('beautiful', 'person')
 hashTable.insert('beautiful', 'world')
-console.log(hashTable.print())
+console.log(hashTable)
 hashTable.insert('fido', 'dog')
 hashTable.insert('rex', 'dinosaur')
 hashTable.insert('tux', 'penguin')
-console.log(hashTable.print())
+console.log(hashTable)
 hashTable.remove('rex')
 hashTable.remove('tux')
-console.log(hashTable.print())
+console.log(hashTable)
 console.log(hashTable.lookup('rex'))
 console.log(hashTable.lookup('tux'))
 console.log(hashTable.lookup('fido'))
@@ -198,4 +191,4 @@ console.log(hashTable.lookup('fido'))
 hashTable.insert('rex', 'dinosaur')
 hashTable.insert('tux', 'penguin')
 hashTable.resize(7)
-console.log(hashTable.print())
+console.log(hashTable)

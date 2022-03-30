@@ -1,4 +1,4 @@
-/* Sets */
+/* Set */
 // const MySet = function () {
 //     // 'collection' hold set
 //     const collection = []

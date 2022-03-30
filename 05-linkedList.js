@@ -1,4 +1,3 @@
-/* Linked List */
 class Node {
     constructor(data) {
         // Initialize: data, next

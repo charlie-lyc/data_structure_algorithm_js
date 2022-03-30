@@ -1,7 +1,11 @@
-/* Stacks */ 
+/* Stack */ 
 // const Stack = function () {
 //     this.storage = {}
 //     this.top = 0
+//
+//     this.print() {
+//         return this.storage
+//     }
 //
 //     // Add a value onto the end of stack
 //     this.push = (value) => {
@@ -14,9 +18,9 @@
 //         if (this.top === 0) {
 //             return null
 //         }
+//         const result = this.storage[this.top - 1]
+//         delete this.storage[this.top - 1]
 //         this.top --
-//         const result = this.storage[this.top]
-//         delete this.storage[this.top]
 //         return result
 //     }
 //
@@ -29,12 +33,20 @@
 //     this.size = () => {
 //         return this.top
 //     }
+//
+//     this.isEmpty() {
+//         return this.top === 0
+//     }
 // }
 
 ///////////////////////////////////////////////////
 // const Stack = function () {
 //     const storage = {}
 //     let top = 0
+//
+//     this.print() {
+//         return this.storage
+//     }
 //
 //     // Add a value onto the end of stack
 //     this.push = (value) => {
@@ -47,12 +59,12 @@
 //         if (top === 0) {
 //             return null
 //         }
+//         const result = storage[this.top - 1]
+//         delete storage[this.top - 1]
 //         top --
-//         const result = storage[top]
-//         delete storage[top]
-//         return result    
+//         return result   
 //     }
-//       
+//
 //     // Return value at the end of stack
 //     this.peek = () => {
 //         return storage[top-1]
@@ -62,6 +74,10 @@
 //     this.size = () => {
 //         return top
 //     }
+//
+//     this.isEmpty() {
+//         return this.top === 0
+//     }
 // }
 
 ///////////////////////////////////////////////////
@@ -70,17 +86,21 @@ class Stack {
         this.storage = {}
         this.top = 0
     }
+    print() {
+        return this.storage
+    }
     push(element) {
         this.storage[this.top] = element
         this.top ++
+        return
     }
     pop() {
         if (this.top === 0) {
             return null
         }
+        const result = this.storage[this.top - 1]
+        delete this.storage[this.top - 1]
         this.top --
-        const result = this.storage[this.top]
-        delete this.storage[this.top]
         return result
     }
     peek() {
@@ -89,20 +109,27 @@ class Stack {
     size() {
         return this.top
     }
+    isEmpty() {
+        return this.top === 0
+    }
 }
 
 const stack = new Stack()
 stack.push(1)
 stack.push(2)
 stack.push(3)
+console.log(stack.print())
+console.log(stack.isEmpty())
 console.log(stack.peek())
 console.log(stack.size())
 console.log(stack.pop())
 console.log(stack.pop())
 console.log(stack.pop())
 console.log(stack.pop())
+console.log(stack.isEmpty())
 stack.push('hello')
 stack.push('world')
+console.log(stack.print())
 console.log(stack.peek())
 console.log(stack.size())
 console.log(stack.pop())

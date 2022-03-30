@@ -1,4 +1,3 @@
-/* Queue */ 
 class Queue {
     constructor() {
         // Initialization: collection, front, rear
@@ -6,7 +5,7 @@ class Queue {
     }
 
     print() {
-
+        return this.collection
     }
 
     enqueue(element) {
@@ -17,11 +16,11 @@ class Queue {
 
     }
 
-    front() {
+    frontIs() {
         
     }
 
-    rear() {
+    rearIs() {
 
     }
 
@@ -35,17 +34,3 @@ class Queue {
 }
 
 module.exports = Queue
-
-/////////////////////////////////////////////////////////////
-
-const queue = new Queue()
-queue.enqueue('a')
-queue.enqueue('b')
-console.log(queue.print())
-console.log(queue.frontIs())
-console.log(queue.rearIs())
-console.log(queue.size())
-console.log(queue.dequeue())
-console.log(queue.isEmpty())
-console.log(queue.dequeue())
-console.log(queue.isEmpty())

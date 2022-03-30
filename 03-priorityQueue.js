@@ -1,4 +1,3 @@
-/* Priority Queue */
 class PriorityQueue {
     constructor() {
         // Initialize: collection, front, rear
@@ -17,11 +16,11 @@ class PriorityQueue {
 
     }
 
-    front() {
+    frontIs() {
 
     }
 
-    rear() {
+    rearIs() {
 
     }
 

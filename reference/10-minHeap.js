@@ -1,11 +1,7 @@
-/* Min Heaps */
+/* Min Heap */
 class MinHeap {
     constructor() {
         this.heap = [null]
-    }
-
-    print() {
-        return this.heap
     }
 
     insert(num) {

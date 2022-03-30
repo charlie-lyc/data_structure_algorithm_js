@@ -1,4 +1,3 @@
-/* Trie */
 class Node {
     constructor() {
         // Initialize: keys, end

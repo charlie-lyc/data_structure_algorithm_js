@@ -1,4 +1,3 @@
-/* Sets */
 class MySet {
     constructor() {
         // Initialize: collection

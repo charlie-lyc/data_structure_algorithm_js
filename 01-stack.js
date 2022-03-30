@@ -1,8 +1,11 @@
-/* Stacks */ 
 class Stack {
     constructor() {
         // Initialize: storage, top
         
+    }
+
+    print() {
+        return this.storage
     }
 
     size() {
@@ -21,6 +24,9 @@ class Stack {
 
     }
 
+    isEmpty() {
+
+    }
 }
 
 module.exports = Stack

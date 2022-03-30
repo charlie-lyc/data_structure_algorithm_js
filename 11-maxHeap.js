@@ -1,4 +1,3 @@
-/* Max Heaps */
 class MaxHeap {
     constructor() {
         // Initialize: heap

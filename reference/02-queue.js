@@ -4,7 +4,7 @@
 //     let front = 0
 //     let rear = 0
 //
-//     this.print = () => {
+//     this.print() {
 //         return collection
 //     }
 //
@@ -88,3 +88,4 @@ console.log(queue.dequeue())
 console.log(queue.isEmpty())
 console.log(queue.dequeue())
 console.log(queue.isEmpty())
+console.log(queue.dequeue())

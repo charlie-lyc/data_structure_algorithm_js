@@ -1,4 +1,3 @@
-/* Min Heaps */
 class MinHeap {
     constructor() {
         // Initialize: heap

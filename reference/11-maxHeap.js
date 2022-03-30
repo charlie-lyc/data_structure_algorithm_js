@@ -1,11 +1,7 @@
-/* Max Heaps */
+/* Max Heap */
 class MaxHeap {
     constructor() {
         this.heap = [null]
-    }
-
-    print() {
-        return this.heap
     }
 
     insert(num) {

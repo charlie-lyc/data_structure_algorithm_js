@@ -1,11 +1,9 @@
-/* Helper Function */
 const hashFunction = (string, max) => {
     // Start initializing: hash
     // And use 'string.charCodeAt()' and '%'
 
 }
 
-/* Hash Table */
 class HashTable {
     constructor(limit) {
         // Initialize: storage, storageLimit

@@ -1,4 +1,3 @@
-/* Binary Tree */ 
 class Node {
     constructor(data, left = null, right = null) {
         // Initialize: data, left, right
@@ -6,7 +5,7 @@ class Node {
     }
 }
 
-class BinaryTree {
+class BinarySearchTree {
     constructor() {
         // Initialize: root
         
@@ -69,7 +68,7 @@ module.exports = BinaryTree
 
 //////////////////////////////////////////////////////////
 
-const binarySearchTree = new BinaryTree()
+const binarySearchTree = new BinarySearchTree()
 binarySearchTree.add(4)
 binarySearchTree.add(2)
 binarySearchTree.add(6)

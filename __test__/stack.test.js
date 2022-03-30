@@ -1,10 +1,14 @@
 const Stack = require('../01-stack')
 
-describe('Data Structure: 01-Stacks', () => {
+describe('Data Structure: 01-Stack', () => {
     let stack
 
     beforeEach(() => {
         stack = new Stack()
+    })
+
+    it('does not throw error when print stack', () => {
+        expect(() => stack.print()).not.toThrow()
     })
 
     it('returns 0 for the size of a new stack', () => {
@@ -62,6 +66,12 @@ describe('Data Structure: 01-Stacks', () => {
         stack.push('a')
         stack.push('b')
         expect(stack.peek()).toEqual('b')
+    })
+
+    it('returns true or false when stack is empty or not', () => {
+        expect(stack.isEmpty()).toEqual(true)
+        stack.push('a')
+        expect(stack.isEmpty()).toEqual(false)
     })
 })
 
