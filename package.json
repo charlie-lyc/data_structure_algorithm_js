@@ -1,0 +1,26 @@
+{
+  "name": "ds-al-js",
+  "version": "1.0.0",
+  "description": "Data Structure and Algorithm in JavaScript",
+  "scripts": {
+    "test": "jest",
+    "test:stack": "jest stack.test.js",
+    "test:queue": "jest queue.test.js",
+    "test:priorityQueue": "jest priorityQueue.test.js",
+    "test:set": "jest set.test.js",
+    "test:linkedList": "jest linkedList.test.js",
+    "test:hashTable": "jest hashTable.test.js",
+    "test:binaryTree": "jest binaryTree.test.js",
+    "test:tree": "jest tree.test.js",
+    "test:trie": "jest trie.test.js",
+    "test:minHeap": "jest minHeap.test.js",
+    "test:maxHeap": "jest maxHeap.test.js",
+    "test:graph": "jest graph.test.js"
+  },
+  "keywords": [],
+  "author": "Charlie",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
