@@ -29,15 +29,15 @@ describe('Data Structure: 02-Queue', () => {
         expect(() => queue.dequeue()).not.toThrow()
     })
 
-    it('returns 0 for the size of queue after removing more than the number of added items', () => {
+    it('returns null when removing an item from an empty queue', () => {
+        expect(queue.dequeue()).toEqual(null)
+    })
+
+    it('returns 0 for the size of queue after removing more than added items', () => {
         queue.enqueue('a')
         queue.dequeue()
         queue.dequeue()
         expect(queue.size()).toEqual(0)
-    })
-
-    it('returns null when removing an item from an empty queue', () => {
-        expect(queue.dequeue()).toEqual(null)
     })
 
     it('returns 1 for the size of queue after adding two items and removing one', () => {

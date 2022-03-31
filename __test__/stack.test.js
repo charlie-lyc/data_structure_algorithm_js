@@ -29,15 +29,15 @@ describe('Data Structure: 01-Stack', () => {
         expect(() => stack.pop()).not.toThrow()
     })
 
-    it('returns 0 for the size of stack after removing more than the number of added items', () => {
+    it('returns null when removing an item from an empty stack', () => {
+        expect(stack.pop()).toEqual(null)
+    })
+
+    it('returns 0 for the size of stack after removing more than added items', () => {
         stack.push('a')
         stack.pop()
         stack.pop()
         expect(stack.size()).toEqual(0)
-    })
-
-    it('returns null when removing an item from an empty stack', () => {
-        expect(stack.pop()).toEqual(null)
     })
 
     it('returns 1 for the size of stack after adding two items and removing one', () => {

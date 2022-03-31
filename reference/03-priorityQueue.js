@@ -8,20 +8,20 @@
 //         return collection
 //     }
 //
-//     this.enqueue = (element) => {
+//     this.enqueue = (item) => { // item: [element, priority]
 //         if (this.isEmpty()) {
-//             collection.push(element)
+//             collection.push(item)
 //         } else {
 //             let added = false
 //             for (let i = 0; i < collection.length; i ++) {
-//                 if (element[1] < collection[i][1]) {
-//                     collection.splice(i, 0, element)
+//                 if (item[1] < collection[i][1]) {
+//                     collection.splice(i, 0, item)
 //                     added = true
 //                     break
 //                 }
 //             }
 //             if (!added) {
-//                 collection.push(element)
+//                 collection.push(item)
 //             }
 //         }
 //         rear ++
@@ -64,20 +64,20 @@ class PriorityQueue {
     print() {
         return this.collection
     }
-    enqueue(element) {
+    enqueue(item) { // item: [element, priority]
         if (this.isEmpty()) {
-            this.collection.push(element)
+            this.collection.push(item)
         } else {
             let added = false
             for (let i = 0; i < this.collection.length; i ++) {
-                if (element[1] < this.collection[i][1]) {
-                    this.collection.splice(i, 0, element)
+                if (item[1] < this.collection[i][1]) {
+                    this.collection.splice(i, 0, item)
                     added = true
                     break
                 }
             }
             if (!added) {
-                this.collection.push(element)
+                this.collection.push(item)
             }
         }
         this.rear ++
@@ -106,9 +106,9 @@ class PriorityQueue {
 }
 
 const priorityQueue = new PriorityQueue()
-priorityQueue.enqueue(['c', 3])
 priorityQueue.enqueue(['b', 2])
 priorityQueue.enqueue(['a', 1])
+priorityQueue.enqueue(['a', 3])
 console.log(priorityQueue.print())
 console.log(priorityQueue.frontIs())
 console.log(priorityQueue.rearIs())
@@ -118,3 +118,4 @@ console.log(priorityQueue.dequeue())
 console.log(priorityQueue.isEmpty())
 console.log(priorityQueue.dequeue())
 console.log(priorityQueue.isEmpty())
+console.log(priorityQueue.dequeue())

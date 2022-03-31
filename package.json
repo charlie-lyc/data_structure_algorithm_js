@@ -6,7 +6,7 @@
     "test": "jest",
     "test:stack": "jest stack.test.js",
     "test:queue": "jest queue.test.js",
-    "test:priorityQueue": "jest priorityQueue.test.js",
+    "test:priorityQueue": "jest priorityQ.test.js",
     "test:set": "jest set.test.js",
     "test:linkedList": "jest linkedList.test.js",
     "test:hashTable": "jest hashTable.test.js",
