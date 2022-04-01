@@ -3,6 +3,10 @@
 //     // 'collection' hold set
 //     const collection = []
 //
+//     this.print = () => {
+//         console.log(collection)
+//     }
+//
 //     // Check for presence of an element and return true or false
 //     this.has = (element) => {
 //         return collection.indexOf(element) !== -1
@@ -86,14 +90,22 @@
 //         const firstSet = this.values()
 //         return firstSet.every(e => otherSet.has(e))
 //     }
+//
+//     this.isEmpty = () => {
+//         return collection.length === 0
+//     }
 // }
 
 // const firstSet = new MySet()
+// console.log(firstSet.isEmpty())
 // firstSet.add(1)
 // firstSet.add(2)
 // firstSet.add(3)
-// firstSet.add(5)
+// firstSet.print()
+// console.log(firstSet.add(5))
+// console.log(firstSet.add(5))
 // console.log(firstSet.has(5))
+// console.log(firstSet.remove(5))
 // console.log(firstSet.remove(5))
 // console.log(firstSet.has(5))
 // console.log(firstSet.size())
@@ -118,6 +130,9 @@
 class MySet {
     constructor() {
         this.collection = []
+    }
+    print() {
+        console.log(this.collection)
     }
     has(element) {
         return this.collection.indexOf(element) !== -1
@@ -173,26 +188,27 @@ class MySet {
                 differenceSet.push(e)
             }
         })
-        const secondSet = otherSet.values()
-        secondSet.forEach(e => {
-            if (!this.has(e)) {
-                differenceSet.push(e)
-            }
-        })
         return differenceSet
     }
     subset(otherSet) {
         const firstSet = this.values()
         return firstSet.every(e => otherSet.has(e))
     }
+    isEmpty() {
+        return this.collection.length === 0
+    }
 }
 
 const firstSet = new MySet()
+console.log(firstSet.isEmpty())
 firstSet.add('a')
 firstSet.add('b')
 firstSet.add('c')
-firstSet.add('d')
+firstSet.print()
+console.log(firstSet.add('d'))
+console.log(firstSet.add('d'))
 console.log(firstSet.has('d'))
+console.log(firstSet.remove('d'))
 console.log(firstSet.remove('d'))
 console.log(firstSet.has('d'))
 console.log(firstSet.size())
@@ -201,7 +217,7 @@ const secondSet = new MySet()
 secondSet.add('c')
 secondSet.add('d')
 secondSet.add('f')
-console.log(secondSet.values())
+console.log(firstSet.values())
 console.log(firstSet.union(secondSet))
 console.log(firstSet.intersection(secondSet))
 console.log(firstSet.difference(secondSet))

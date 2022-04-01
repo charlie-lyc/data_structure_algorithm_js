@@ -8,6 +8,10 @@ class PriorityQueue {
 
     }
 
+    size() {
+
+    }
+
     enqueue(item) { // item: [element, priority]
 
     }
@@ -21,10 +25,6 @@ class PriorityQueue {
     }
 
     rearIs() {
-
-    }
-
-    size() {
 
     }
 

@@ -5,7 +5,7 @@
 //     let rear = 0
 //
 //     this.print() {
-//         return collection
+//         console.log(collection)
 //     }
 //
 //     this.enqueue = (element) => {
@@ -48,7 +48,7 @@ class Queue {
         this.rear = 0
     }
     print() {
-        return this.collection
+        console.log(this.collection)
     }
     enqueue(element) {
         this.collection.push(element)
@@ -80,7 +80,7 @@ class Queue {
 const queue = new Queue()
 queue.enqueue('a')
 queue.enqueue('b')
-console.log(queue.print())
+queue.print()
 console.log(queue.frontIs())
 console.log(queue.rearIs())
 console.log(queue.size())

@@ -5,7 +5,11 @@ class Queue {
     }
 
     print() {
-        return this.collection
+        console.log(this.collection)
+    }
+
+    size() {
+        
     }
 
     enqueue(element) {
@@ -22,10 +26,6 @@ class Queue {
 
     rearIs() {
 
-    }
-
-    size() {
-        
     }
 
     isEmpty() {

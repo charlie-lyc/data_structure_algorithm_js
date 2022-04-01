@@ -5,7 +5,7 @@
 //     let rear = 0
 //
 //     this.print = () => {
-//         return collection
+//         console.log(collection)
 //     }
 //
 //     this.enqueue = (item) => { // item: [element, priority]
@@ -62,7 +62,7 @@ class PriorityQueue {
         this.rear = 0
     }
     print() {
-        return this.collection
+        console.log(this.collection)
     }
     enqueue(item) { // item: [element, priority]
         if (this.isEmpty()) {
@@ -109,7 +109,7 @@ const priorityQueue = new PriorityQueue()
 priorityQueue.enqueue(['b', 2])
 priorityQueue.enqueue(['a', 1])
 priorityQueue.enqueue(['a', 3])
-console.log(priorityQueue.print())
+priorityQueue.print()
 console.log(priorityQueue.frontIs())
 console.log(priorityQueue.rearIs())
 console.log(priorityQueue.size())

@@ -4,7 +4,7 @@
 //     this.top = 0
 //
 //     this.print() {
-//         return this.storage
+//         console.log(this.storage)
 //     }
 //
 //     // Add a value onto the end of stack
@@ -45,7 +45,7 @@
 //     let top = 0
 //
 //     this.print() {
-//         return this.storage
+//         console.log(this.storage)
 //     }
 //
 //     // Add a value onto the end of stack
@@ -87,7 +87,7 @@ class Stack {
         this.top = 0
     }
     print() {
-        return this.storage
+        console.log(this.storage)
     }
     push(element) {
         this.storage[this.top] = element
@@ -118,7 +118,7 @@ const stack = new Stack()
 stack.push(1)
 stack.push(2)
 stack.push(3)
-console.log(stack.print())
+stack.print()
 console.log(stack.isEmpty())
 console.log(stack.peek())
 console.log(stack.size())
@@ -129,7 +129,7 @@ console.log(stack.pop())
 console.log(stack.isEmpty())
 stack.push('hello')
 stack.push('world')
-console.log(stack.print())
+stack.print()
 console.log(stack.peek())
 console.log(stack.size())
 console.log(stack.pop())

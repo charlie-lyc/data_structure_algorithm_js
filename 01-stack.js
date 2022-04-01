@@ -5,7 +5,7 @@ class Stack {
     }
 
     print() {
-        return this.storage
+        console.log(this.storage)
     }
 
     size() {
