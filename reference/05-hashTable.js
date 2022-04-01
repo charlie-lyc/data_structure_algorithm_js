@@ -13,7 +13,11 @@ const hashFunction = (string, max) => {
 // const HashTable = function (limit) {
 //     let storage = []
 //     let storageLimit = limit
-//
+
+//     this.print = () => {
+//         console.log(this.storage)
+//     }
+
 //     this.insert = (key, value) => {
 //         const index = hashFunction(key, storageLimit)
 //         if (storage[index] === undefined) {
@@ -36,7 +40,7 @@ const hashFunction = (string, max) => {
 //             return
 //         } 
 //     }
-//
+
 //     this.remove = (key) => {
 //         const index = hashFunction(key, storageLimit)
 //         if (storage[index].length === 1 && storage[index][0][0] === key) {
@@ -54,7 +58,7 @@ const hashFunction = (string, max) => {
 //         }
 //         return
 //     }
-//
+
 //     this.lookup = (key) => {
 //         const index = hashFunction(key, storageLimit)
 //         if (storage[index] === undefined) {
@@ -70,13 +74,13 @@ const hashFunction = (string, max) => {
 //         }
 //         return undefined
 //     }
-//
+
 //     this.resize = (newLimit) => {
 //         storageLimit = newLimit
 //         if (storage.length !== 0) {
 //             const newStorage = []
 //             storage.forEach(element => {
-//                 element.forEach((ele, idx) => {
+//                 element.forEach(ele => {
 //                     const index = hashFunction(ele[0], storageLimit)
 //                     if (newStorage[index] === undefined) {
 //                         newStorage[index] = [ [ele[0], ele[1]] ]
@@ -96,6 +100,9 @@ class HashTable {
     constructor(limit) {
         this.storage = []
         this.storageLimit = limit
+    }
+    print() {
+        console.log(this.storage)
     }
     insert(key, value) {
         const index = hashFunction(key, this.storageLimit)
@@ -120,6 +127,9 @@ class HashTable {
         } 
     }
     remove(key) {
+        if (this.storage.length === 0) {
+            return 
+        }
         const index = hashFunction(key, this.storageLimit)
         if (this.storage[index].length === 1 && this.storage[index][0][0] === key) {
             delete this.storage[index]
@@ -156,7 +166,7 @@ class HashTable {
         if (this.storage.length !== 0) {
             const newStorage = []
             this.storage.forEach(element => {
-                element.forEach((ele, idx) => {
+                element.forEach(ele => {
                     const index = hashFunction(ele[0], this.storageLimit)
                     if (newStorage[index] === undefined) {
                         newStorage[index] = [ [ele[0], ele[1]] ]
@@ -171,24 +181,31 @@ class HashTable {
     }
 }
 
-console.log(hashFunction('beautiful', 4))
+console.log(hashFunction('beautiful', 4)) // 1
+console.log(hashFunction('fido', 4))      // 2
+console.log(hashFunction('rex', 4))       // 3
+console.log(hashFunction('tux', 4))       // 1
 
 const hashTable = new HashTable(4)
 hashTable.insert('beautiful', 'person')
 hashTable.insert('beautiful', 'world')
-console.log(hashTable)
+hashTable.print()
 hashTable.insert('fido', 'dog')
 hashTable.insert('rex', 'dinosaur')
 hashTable.insert('tux', 'penguin')
-console.log(hashTable)
+hashTable.print()
 hashTable.remove('rex')
 hashTable.remove('tux')
-console.log(hashTable)
+hashTable.remove('tux')
+hashTable.print()
 console.log(hashTable.lookup('rex'))
 console.log(hashTable.lookup('tux'))
 console.log(hashTable.lookup('fido'))
-
 hashTable.insert('rex', 'dinosaur')
 hashTable.insert('tux', 'penguin')
-hashTable.resize(7)
-console.log(hashTable)
+hashTable.resize(6)
+console.log(hashTable.storage.length)
+hashTable.print()
+hashTable.resize(4)
+console.log(hashTable.storage.length)
+hashTable.print()

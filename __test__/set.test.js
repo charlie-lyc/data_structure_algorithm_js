@@ -1,7 +1,6 @@
-const { expect } = require('@jest/globals')
 const MySet = require('../04-set.js')
 
-describe('Data Structure: 03-Set', () => {
+describe('Data Structure: 04-Set', () => {
     let firstSet
     let secondSet
     let thirdSet
