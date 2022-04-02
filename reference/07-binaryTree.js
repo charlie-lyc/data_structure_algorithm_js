@@ -15,26 +15,26 @@ class BinaryTree {
     add(data) {
         if (this.root === null) {
             this.root = new Node(data)
-            return
+            return true
         }
         /**************************************************/ 
         const searchTreeAndAddNode = (node) => {
             if (data < node.data) {
                 if (node.left === null) {
                     node.left = new Node(data)
-                    return
+                    return true
                 } else {
                     return searchTreeAndAddNode(node.left)
                 }
             } else if (data > node.data) {
                 if (node.right === null) {
                     node.right = new Node(data)
-                    return
+                    return true
                 } else {
                     return searchTreeAndAddNode(node.right)
                 }
-            } else {
-                return null
+            } else if (data === node.data) {
+                return false
             }
         }
         /**************************************************/ 
@@ -78,7 +78,7 @@ class BinaryTree {
         return false
     }
 
-    find(data) {
+    findNodeTree(data) {
         let current = this.root
         while (current !== null) {
             if (current.data === data) {
@@ -95,7 +95,7 @@ class BinaryTree {
 
     remove(data) {
         /********************************************************/ 
-        const removeNodeFromTree = (node, data) => {
+        const searchTreeAndRemoveNode = (node, data) => {
             if (node === null) {
                 return null
             }
@@ -113,16 +113,16 @@ class BinaryTree {
                     temporaryNode = temporaryNode.left
                 }
                 node.data = temporaryNode.data
-                node.right = removeNodeFromTree(node.right, temporaryNode.data)
+                node.right = searchTreeAndRemoveNode(node.right, temporaryNode.data)
             } else if (node.data > data) {
-                node.left = removeNodeFromTree(node.left, data)
+                node.left = searchTreeAndRemoveNode(node.left, data)
             } else if (node.data < data) {
-                node.right = removeNodeFromTree(node.right, data)
+                node.right = searchTreeAndRemoveNode(node.right, data)
             }
             return node
         }
         /********************************************************/
-        this.root = removeNodeFromTree(this.root, data)
+        this.root = searchTreeAndRemoveNode(this.root, data)
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -157,8 +157,10 @@ class BinaryTree {
      * https://towardsdatascience.com/5-types-of-binary-tree-with-cool-illustrations-9b335c430254
      */
     isBalanced() {
-        return (this.findMinHeight() === this.findMaxHeight()) || (this.findMinHeight() === this.findMaxHeight() - 1)
-        // return this.findMinHeight() >= this.findMaxHeight() - 1
+        if (this.root === null) {
+            return false
+        }
+        return this.findMinHeight() >= this.findMaxHeight() - 1
     }
 
     //////////////////////////////////////////////////////////////////////
@@ -243,42 +245,63 @@ class BinaryTree {
     }
 }
 
-const binarySearchTree = new BinaryTree()
-binarySearchTree.add(4)
-binarySearchTree.add(2)
-binarySearchTree.add(6)
-binarySearchTree.add(1)
-binarySearchTree.add(3)
-binarySearchTree.add(5)
-binarySearchTree.add(7)
+const binaryTree = new BinaryTree()
+console.log(binaryTree.findMin())
+console.log(binaryTree.findMax())
+console.log(binaryTree.isPresent(4))
+console.log(binaryTree.findNodeTree(4))
+binaryTree.remove()
+console.log(binaryTree.findMinHeight())
+console.log(binaryTree.findMaxHeight())
+console.log(binaryTree.isBalanced())
+console.log(binaryTree.inOrder())
+console.log(binaryTree.preOrder())
+console.log(binaryTree.postOrder())
+console.log(binaryTree.levelOrder())
+
+console.log(binaryTree.add(4))
+console.log(binaryTree.add(4))
+console.log(binaryTree.add(2))
+console.log(binaryTree.add(6))
+console.log(binaryTree.add(1))
+console.log(binaryTree.add(3))
+console.log(binaryTree.add(5))
+console.log(binaryTree.add(7))
 //              4
 //         2          6
 //     1      3    5     7
-console.log(binarySearchTree)
-console.log(binarySearchTree.find(2))
-console.log(binarySearchTree.findMin())
-console.log(binarySearchTree.findMax())
-console.log(binarySearchTree.isPresent(0))
-console.log(binarySearchTree.findMinHeight())
-console.log(binarySearchTree.findMaxHeight())
-console.log(binarySearchTree.isBalanced())
-binarySearchTree.remove(4)
-binarySearchTree.remove(7)
+console.log(binaryTree)
+console.log(binaryTree.findNodeTree(2))
+console.log(binaryTree.findNodeTree(6))
+console.log(binaryTree.findMin())
+console.log(binaryTree.findMax())
+console.log(binaryTree.isPresent(2))
+console.log(binaryTree.isPresent(6))
+console.log(binaryTree.findMinHeight())
+console.log(binaryTree.findMaxHeight())
+console.log(binaryTree.isBalanced())
+binaryTree.remove(4)
+binaryTree.remove(7)
 //              5
 //         2          6
 //     1      3          
-console.log(binarySearchTree.findMinHeight())
-console.log(binarySearchTree.isBalanced())
-binarySearchTree.add(0)
+console.log(binaryTree.add(0))
 //              5
 //         2          6
 //     1      3
 // 0          
-console.log(binarySearchTree.findMinHeight())
-console.log(binarySearchTree.findMaxHeight())
-console.log(binarySearchTree.isBalanced())
+console.log(binaryTree.findMinHeight())
+console.log(binaryTree.findMaxHeight())
+console.log(binaryTree.isBalanced())
 
-console.log(binarySearchTree.inOrder())   // [0, 1, 2, 3, 5, 6]
-console.log(binarySearchTree.preOrder())  // [5, 2, 1, 0, 3, 6]
-console.log(binarySearchTree.postOrder()) // [0, 1, 3, 2, 6, 5]
-console.log(binarySearchTree.levelOrder())// [5, 2, 6, 1, 3, 0]
+console.log(binaryTree.inOrder())   // [0, 1, 2, 3, 5, 6]
+console.log(binaryTree.preOrder())  // [5, 2, 1, 0, 3, 6]
+console.log(binaryTree.postOrder()) // [0, 1, 3, 2, 6, 5]
+console.log(binaryTree.levelOrder())// [5, 2, 6, 1, 3, 0]
+
+console.log(binaryTree.add(4))
+console.log(binaryTree.findMinHeight())
+console.log(binaryTree.findMaxHeight())
+
+binaryTree.remove(1)
+binaryTree.remove(3)

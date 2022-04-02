@@ -25,7 +25,7 @@ describe('Data Structure: 06-LinkedList', () => {
         expect(linkedList.isEmpty()).toBeFalsy()
     })
 
-    it('return 1 for the size of linked list when add data once', () => {
+    it('return 1 for the size of linked list when add data once to an empty linked list', () => {
         linkedList.add('Kitten')
         expect(linkedList.size()).toEqual(1)
     })
@@ -36,6 +36,8 @@ describe('Data Structure: 06-LinkedList', () => {
 
     it('return 1 for the size of linked list after adding data twice and removing data once', () => {
         linkedList.add('Kitten')
+        linkedList.add('Puppy')
+        linkedList.remove('Kitten')
         expect(linkedList.size()).toEqual(1)
     })
 
@@ -68,7 +70,7 @@ describe('Data Structure: 06-LinkedList', () => {
         expect(linkedList.dataAt(1)).toBeUndefined()
     })
 
-    it('return the added data when add data at specific index', () => {
+    it('possible to add data at specific index', () => {
         linkedList.addAt(0, 'Kitten')
         expect(linkedList.dataAt(0)).toMatch(/Kitten/)
         linkedList.addAt(0, 'Puppy')
@@ -87,7 +89,7 @@ describe('Data Structure: 06-LinkedList', () => {
         expect(linkedList.dataAt(1)).toMatch(/Puppy/)
     })
 
-    it('return 1 for the size of linked list after adding data twice and removing data once at specific index ', () => {
+    it('possible to remove data at specific index ', () => {
         linkedList.addAt(0, 'Kitten')
         linkedList.addAt(1, 'Puppy')
         linkedList.removeAt(0)
