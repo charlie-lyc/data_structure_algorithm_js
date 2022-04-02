@@ -27,16 +27,16 @@ class Trie {
         this.root = new Node()
     }
 
-    add(input, node = this.root) {
-        if (input.length === 0) {
+    add(word, node = this.root) {
+        if (word.length === 0) {
             node.setEnd()
             return
         }
-        if (!node.keys.has(input[0])) {
-            node.keys.set(input[0], new Node())
-            return this.add(input.substr(1), node.keys.get(input[0]))
+        if (!node.keys.has(word[0])) {
+            node.keys.set(word[0], new Node())
+            this.add(word.substr(1), node.keys.get(word[0]))
         } else {
-            return this.add(input.substr(1), node.keys.get(input[0]))
+            this.add(word.substr(1), node.keys.get(word[0]))
         }
     }
 
@@ -57,9 +57,9 @@ class Trie {
         return false
     }
 
-    print() {
+    printAllWords() {
         let words = []
-        /********************************************/
+        /********************************************************/
         const searchTrie = (node, string) => {
             if (node.keys.size === 0) {
                 if (string.length > 0) {
@@ -74,7 +74,7 @@ class Trie {
                 searchTrie(node.keys.get(key), string.concat(key))
             }
         }
-        /********************************************/
+        /********************************************************/
         searchTrie(this.root, '')
         if (words.length > 0) {
             return words
@@ -84,6 +84,7 @@ class Trie {
 }
 
 const trie = new Trie()
+console.log(trie.printAllWords())
 trie.add('ball') 
 trie.add('bat') 
 trie.add('doll') 
@@ -92,7 +93,7 @@ trie.add('do')
 trie.add('dorm')
 trie.add('send')
 trie.add('sense')
-console.log(trie.print())
+console.log(trie.printAllWords())
 console.log(trie.isPresent('ball'))
 console.log(trie.isPresent('bat'))
 console.log(trie.isPresent('doll'))

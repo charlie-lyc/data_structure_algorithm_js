@@ -10,6 +10,7 @@ class TreeNode {
     
     isPresent(data) {
         const searchTreeAndIsPresent = (children) => {
+            /********************************************************/
             for (const child of children) {
                 if (child.data === data) {
                     return true
@@ -20,6 +21,7 @@ class TreeNode {
                 }
             }
             return false
+            /********************************************************/
         }
         return searchTreeAndIsPresent(this.children)
     }
@@ -27,12 +29,14 @@ class TreeNode {
     isDuplicated(data) {
         let count = 0
         const searchTreeAndCount = (children) => {
+            /*************************************/
             children.forEach(child => {
                 if (child.data === data) {
                     count ++
                 }
                 searchTreeAndCount(child.children)
             })
+            /*************************************/
         }
         searchTreeAndCount(this.children)
         if (count >= 2) {
@@ -43,12 +47,14 @@ class TreeNode {
 
     removeEvery(data) {
         const searchTreeAndRemoveEvery = (children) => {
+            /******************************************/
             children.forEach(child => {
                 if (child.data === data) {
                     child.data = null
                 }
                 searchTreeAndRemoveEvery(child.children)
             })
+            /******************************************/
         }
         searchTreeAndRemoveEvery(this.children)
     }
