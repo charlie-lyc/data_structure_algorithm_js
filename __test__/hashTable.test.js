@@ -14,6 +14,14 @@ describe('Data Structure: 05-HashTable', () => {
         expect(hashFunction('tux', 4)).toEqual(1)
     })
 
+    it('should have required methods', () => {
+        expect(hashTable).toHaveProperty('print')
+        expect(hashTable).toHaveProperty('insert')
+        expect(hashTable).toHaveProperty('remove')
+        expect(hashTable).toHaveProperty('lookup')
+        expect(hashTable).toHaveProperty('resize')
+    })
+
     it('not throw error when print a hash table', () => {
         expect(() => hashTable.print()).not.toThrow()
     })

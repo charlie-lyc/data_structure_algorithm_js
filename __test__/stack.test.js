@@ -7,6 +7,15 @@ describe('Data Structure: 01-Stack', () => {
         stack = new Stack()
     })
 
+    it('should have required methods', () => {
+        expect(stack).toHaveProperty('print')
+        expect(stack).toHaveProperty('size')
+        expect(stack).toHaveProperty('push')
+        expect(stack).toHaveProperty('pop')
+        expect(stack).toHaveProperty('peek')
+        expect(stack).toHaveProperty('isEmpty')
+    })
+
     it('not throw error when print a stack', () => {
         expect(() => stack.print()).not.toThrow()
     })

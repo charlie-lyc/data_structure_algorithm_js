@@ -7,6 +7,22 @@ describe('Data Structure: 07-BinaryTree', () => {
         binaryTree = new BinaryTree()
     })
 
+    it('should have required methods', () => {
+        expect(binaryTree).toHaveProperty('add')
+        expect(binaryTree).toHaveProperty('findMin')
+        expect(binaryTree).toHaveProperty('findMax')
+        expect(binaryTree).toHaveProperty('isPresent')
+        expect(binaryTree).toHaveProperty('findNodeTree')
+        expect(binaryTree).toHaveProperty('remove')
+        expect(binaryTree).toHaveProperty('findMinHeight')
+        expect(binaryTree).toHaveProperty('findMaxHeight')
+        expect(binaryTree).toHaveProperty('isBalanced')
+        expect(binaryTree).toHaveProperty('inOrder')
+        expect(binaryTree).toHaveProperty('preOrder')
+        expect(binaryTree).toHaveProperty('postOrder')
+        expect(binaryTree).toHaveProperty('levelOrder')
+    })
+
     it('not throw error when add data', () => {
         expect(() => binaryTree.add()).not.toThrow()
     })

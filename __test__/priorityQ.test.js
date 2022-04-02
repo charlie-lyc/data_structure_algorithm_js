@@ -7,6 +7,16 @@ describe('Data Structure: 03-PriorityQueue', () => {
         priorityQueue = new PriorityQueue()
     })
 
+    it('should have required methods', () => {
+        expect(priorityQueue).toHaveProperty('print')
+        expect(priorityQueue).toHaveProperty('size')
+        expect(priorityQueue).toHaveProperty('enqueue')
+        expect(priorityQueue).toHaveProperty('dequeue')
+        expect(priorityQueue).toHaveProperty('frontIs')
+        expect(priorityQueue).toHaveProperty('rearIs')
+        expect(priorityQueue).toHaveProperty('isEmpty')
+    })
+
     it('not throw error when print a priority queue', () => {
         expect(() => priorityQueue.print()).not.toThrow()
     })

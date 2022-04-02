@@ -9,6 +9,19 @@ describe('Data Structure: 04-Set', () => {
         firstSet = new MySet()
     })
 
+    it('should have required methods', () => {
+        expect(firstSet).toHaveProperty('print')
+        expect(firstSet).toHaveProperty('values')
+        expect(firstSet).toHaveProperty('size')
+        expect(firstSet).toHaveProperty('add')
+        expect(firstSet).toHaveProperty('remove')
+        expect(firstSet).toHaveProperty('has')
+        expect(firstSet).toHaveProperty('union')
+        expect(firstSet).toHaveProperty('intersection')
+        expect(firstSet).toHaveProperty('difference')
+        expect(firstSet).toHaveProperty('subset')
+    })
+
     it('not throw error when print a set', () => {
         expect(() => firstSet.print()).not.toThrow()
     })

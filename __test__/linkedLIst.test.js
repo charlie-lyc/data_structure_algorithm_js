@@ -7,6 +7,18 @@ describe('Data Structure: 06-LinkedList', () => {
         linkedList = new LinkedList()
     })
 
+    it('should have required methods', () => {
+        expect(linkedList).toHaveProperty('_head')
+        expect(linkedList).toHaveProperty('size')
+        expect(linkedList).toHaveProperty('isEmpty')
+        expect(linkedList).toHaveProperty('add')
+        expect(linkedList).toHaveProperty('remove')
+        expect(linkedList).toHaveProperty('indexOf')
+        expect(linkedList).toHaveProperty('dataAt')
+        expect(linkedList).toHaveProperty('addAt')
+        expect(linkedList).toHaveProperty('removeAt')
+    })
+
     it('not throw error when show the head of a linked list', () => {
         expect(() => linkedList._head()).not.toThrow()
     })

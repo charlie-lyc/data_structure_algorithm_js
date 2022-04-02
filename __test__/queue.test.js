@@ -7,6 +7,16 @@ describe('Data Structure: 02-Queue', () => {
         queue = new Queue()
     })
 
+    it('should have required methods', () => {
+        expect(queue).toHaveProperty('print')
+        expect(queue).toHaveProperty('size')
+        expect(queue).toHaveProperty('enqueue')
+        expect(queue).toHaveProperty('dequeue')
+        expect(queue).toHaveProperty('frontIs')
+        expect(queue).toHaveProperty('rearIs')
+        expect(queue).toHaveProperty('isEmpty')
+    })
+
     it('not throw error when print a queue', () => {
         expect(() => queue.print()).not.toThrow()
     })
