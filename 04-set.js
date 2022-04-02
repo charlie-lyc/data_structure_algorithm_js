@@ -5,7 +5,7 @@ class MySet {
     }
 
     print() {
-
+        console.log(this.collection)
     }
 
     values() {

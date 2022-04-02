@@ -82,9 +82,6 @@ class LinkedList {
         if (0 > index || index > this.length - 1) {
             return undefined
         }
-        if (this.head === null) {
-            return undefined
-        }
         let current = this.head
         let currentIndex = 0
         while (current !== null) {
@@ -94,7 +91,6 @@ class LinkedList {
             current = current.next
             currentIndex ++
         }
-        return undefined
     }
 
     addAt(index, data) {
@@ -112,9 +108,6 @@ class LinkedList {
             }
             this.length ++
         } else if (index !== 0) {
-            if (this.head === null) {
-                return
-            }
             let previous
             let currentIndex = 0
             while (current !== null) {
@@ -130,7 +123,6 @@ class LinkedList {
             }
         }
         return
-
     }
 
     removeAt(index) {
@@ -139,9 +131,7 @@ class LinkedList {
         }
         let current = this.head
         if (index === 0) {
-            if (this.head === null) {
-                return 
-            } else if (this.head !== null) {
+            if (this.head !== null) {
                 if (current.next === null) {
                     this.head = null
                 } else if (current.next !== null) {
@@ -169,17 +159,25 @@ class LinkedList {
 
 const linkedList = new LinkedList()
 
+console.log(linkedList._head())
+console.log(linkedList.size())
 console.log(linkedList.isEmpty())
+console.log(linkedList.remove('Kitten'))
+console.log(linkedList.indexOf('Kitten'))
+console.log(linkedList.dataAt(0))
+console.log(linkedList.removeAt(0))
+
+linkedList.addAt(0, 'Kitten')
+linkedList.removeAt(0)
+
 linkedList.add('Kitten')
 linkedList.add('Puppy')
 linkedList.add('Dog')
 linkedList.add('Cat')
 linkedList.add('Fish')
 console.log(linkedList.isEmpty())
-console.log(linkedList._head())
-console.log(linkedList.size())
+
 linkedList.remove('Kitten')
-linkedList.remove('Fish')
 linkedList.remove('Fish')
 console.log(linkedList._head())
 console.log(linkedList.size())
@@ -187,12 +185,10 @@ console.log(linkedList.size())
 console.log(linkedList.indexOf('Puppy'))
 console.log(linkedList.indexOf('Dog'))
 console.log(linkedList.indexOf('Cat'))
-console.log(linkedList.indexOf('Kitten'))
 
 console.log(linkedList.dataAt(0))
 console.log(linkedList.dataAt(1))
 console.log(linkedList.dataAt(2))
-console.log(linkedList.dataAt(3))
 
 linkedList.addAt(0, 'Kitten')
 console.log(linkedList.indexOf('Kitten'))
@@ -203,3 +199,10 @@ linkedList.addAt(-1, 'hello')
 console.log(linkedList.indexOf('hello'))
 linkedList.addAt(6, 'hello')
 console.log(linkedList.indexOf('hello'))
+
+console.log(linkedList.dataAt(0))
+linkedList.removeAt(0)
+console.log(linkedList.dataAt(0))
+console.log(linkedList.dataAt(3))
+linkedList.removeAt(3)
+console.log(linkedList.dataAt(3))

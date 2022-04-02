@@ -1,4 +1,4 @@
-const MySet = require('../04-set.js')
+const MySet = require('../04-set')
 
 describe('Data Structure: 04-Set', () => {
     let firstSet

@@ -5,7 +5,7 @@ class PriorityQueue {
     }
 
     print() {
-
+        console.log(this.collection)
     }
 
     size() {

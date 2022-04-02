@@ -1,4 +1,4 @@
-const { hashFunction, HashTable } = require('../05-hashTable.js')
+const { hashFunction, HashTable } = require('../05-hashTable')
 
 describe('Data Structure: 05-HashTable', () => {
     let hashTable

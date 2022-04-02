@@ -11,7 +11,7 @@ class HashTable {
     }
 
     print() {
-
+        console.log(this.storage)
     }
 
     insert(key, value) {
