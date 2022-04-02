@@ -32,9 +32,9 @@ describe('Data Structure: 06-LinkedList', () => {
     })
 
     it('return true of false when a linked list is empty or not', () => {
-        expect(linkedList.isEmpty()).toBeTruthy()
+        expect(linkedList.isEmpty()).toBe(true)
         linkedList.add('Kitten')
-        expect(linkedList.isEmpty()).toBeFalsy()
+        expect(linkedList.isEmpty()).toBe(false)
     })
 
     it('return 1 for the size of linked list when add data once to an empty linked list', () => {

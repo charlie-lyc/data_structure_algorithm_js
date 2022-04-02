@@ -80,9 +80,9 @@ describe('Data Structure: 01-Stack', () => {
     })
 
     it('return true or false when stack is empty or not', () => {
-        expect(stack.isEmpty()).toBeTruthy()
+        expect(stack.isEmpty()).toBe(true)
         stack.push('a')
-        expect(stack.isEmpty()).toBeFalsy()
+        expect(stack.isEmpty()).toBe(false)
     })
 })
 

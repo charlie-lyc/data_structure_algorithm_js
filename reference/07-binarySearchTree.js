@@ -1,13 +1,13 @@
-/* Binary Tree */ 
+/* Binary Search Tree */ 
 class Node {
-    constructor(data, left = null, right = null) {
+    constructor(data) {
         this.data = data
-        this.left = left
-        this.right = right
+        this.left = null
+        this.right = null
     }
 }
 
-class BinaryTree {
+class BinarySearchTree {
     constructor() {
         this.root = null
     }
@@ -245,63 +245,63 @@ class BinaryTree {
     }
 }
 
-const binaryTree = new BinaryTree()
-console.log(binaryTree.findMin())
-console.log(binaryTree.findMax())
-console.log(binaryTree.isPresent(4))
-console.log(binaryTree.findNodeTree(4))
-binaryTree.remove()
-console.log(binaryTree.findMinHeight())
-console.log(binaryTree.findMaxHeight())
-console.log(binaryTree.isBalanced())
-console.log(binaryTree.inOrder())
-console.log(binaryTree.preOrder())
-console.log(binaryTree.postOrder())
-console.log(binaryTree.levelOrder())
+const bst = new BinarySearchTree()
+console.log(bst.findMin())
+console.log(bst.findMax())
+console.log(bst.isPresent(4))
+console.log(bst.findNodeTree(4))
+bst.remove()
+console.log(bst.findMinHeight())
+console.log(bst.findMaxHeight())
+console.log(bst.isBalanced())
+console.log(bst.inOrder())
+console.log(bst.preOrder())
+console.log(bst.postOrder())
+console.log(bst.levelOrder())
 
-console.log(binaryTree.add(4))
-console.log(binaryTree.add(4))
-console.log(binaryTree.add(2))
-console.log(binaryTree.add(6))
-console.log(binaryTree.add(1))
-console.log(binaryTree.add(3))
-console.log(binaryTree.add(5))
-console.log(binaryTree.add(7))
+console.log(bst.add(4))
+console.log(bst.add(4))
+console.log(bst.add(2))
+console.log(bst.add(6))
+console.log(bst.add(1))
+console.log(bst.add(3))
+console.log(bst.add(5))
+console.log(bst.add(7))
 //              4
 //         2          6
 //     1      3    5     7
-console.log(binaryTree)
-console.log(binaryTree.findNodeTree(2))
-console.log(binaryTree.findNodeTree(6))
-console.log(binaryTree.findMin())
-console.log(binaryTree.findMax())
-console.log(binaryTree.isPresent(2))
-console.log(binaryTree.isPresent(6))
-console.log(binaryTree.findMinHeight())
-console.log(binaryTree.findMaxHeight())
-console.log(binaryTree.isBalanced())
-binaryTree.remove(4)
-binaryTree.remove(7)
+console.log(bst)
+console.log(bst.findNodeTree(2))
+console.log(bst.findNodeTree(6))
+console.log(bst.findMin())
+console.log(bst.findMax())
+console.log(bst.isPresent(2))
+console.log(bst.isPresent(6))
+console.log(bst.findMinHeight())
+console.log(bst.findMaxHeight())
+console.log(bst.isBalanced())
+bst.remove(4)
+bst.remove(7)
 //              5
 //         2          6
 //     1      3          
-console.log(binaryTree.add(0))
+console.log(bst.add(0))
 //              5
 //         2          6
 //     1      3
 // 0          
-console.log(binaryTree.findMinHeight())
-console.log(binaryTree.findMaxHeight())
-console.log(binaryTree.isBalanced())
+console.log(bst.findMinHeight())
+console.log(bst.findMaxHeight())
+console.log(bst.isBalanced())
 
-console.log(binaryTree.inOrder())   // [0, 1, 2, 3, 5, 6]
-console.log(binaryTree.preOrder())  // [5, 2, 1, 0, 3, 6]
-console.log(binaryTree.postOrder()) // [0, 1, 3, 2, 6, 5]
-console.log(binaryTree.levelOrder())// [5, 2, 6, 1, 3, 0]
+console.log(bst.inOrder())   // [0, 1, 2, 3, 5, 6]
+console.log(bst.preOrder())  // [5, 2, 1, 0, 3, 6]
+console.log(bst.postOrder()) // [0, 1, 3, 2, 6, 5]
+console.log(bst.levelOrder())// [5, 2, 6, 1, 3, 0]
 
-console.log(binaryTree.add(4))
-console.log(binaryTree.findMinHeight())
-console.log(binaryTree.findMaxHeight())
+console.log(bst.add(4))
+console.log(bst.findMinHeight())
+console.log(bst.findMaxHeight())
 
-binaryTree.remove(1)
-binaryTree.remove(3)
+bst.remove(1)
+bst.remove(3)

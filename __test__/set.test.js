@@ -39,12 +39,12 @@ describe('Data Structure: 04-Set', () => {
     })
 
     it('return true when add an element that not exists in a set', () => {
-        expect(firstSet.add('a')).toBeTruthy()
+        expect(firstSet.add('a')).toBe(true)
     })
 
     it('return false when add an element that exists in a set', () => {
         firstSet.add('a')
-        expect(firstSet.add('a')).toBeFalsy()
+        expect(firstSet.add('a')).toBe(false)
     })
 
     it('not throw error when removing an element', () => {
@@ -53,11 +53,11 @@ describe('Data Structure: 04-Set', () => {
 
     it('return true when remove an element that exists in a set', () => {
         firstSet.add('a')
-        expect(firstSet.remove('a')).toBeTruthy()
+        expect(firstSet.remove('a')).toBe(true)
     })
 
     it('return false when remove an element that not exists in a set', () => {
-        expect(firstSet.remove('a')).toBeFalsy()
+        expect(firstSet.remove('a')).toBe(false)
     })
 
     it('return 1 for the size of a set after adding two elements and removing one', () => {
@@ -69,8 +69,8 @@ describe('Data Structure: 04-Set', () => {
 
     it('return true or false when a set has an element or not', () => {
         firstSet.add('a')
-        expect(firstSet.has('a')).toBeTruthy()
-        expect(firstSet.has('b')).toBeFalsy()
+        expect(firstSet.has('a')).toBe(true)
+        expect(firstSet.has('b')).toBe(false)
     })
 
     it('not throw error when find the union set', () => {
@@ -107,7 +107,7 @@ describe('Data Structure: 04-Set', () => {
         if (unionSet.length === expectedResult.length) {
             result = expectedResult.every(element => unionSet.indexOf(element) !== -1)
         }
-        expect(result).toBeTruthy()
+        expect(result).toBe(true)
     })
 
     it('return the intersection set of other set', () => {
@@ -126,7 +126,7 @@ describe('Data Structure: 04-Set', () => {
         if (intersectionSet.length === expectedResult.length) {
             result = expectedResult.every(element => intersectionSet.indexOf(element) !== -1)
         }
-        expect(result).toBeTruthy()
+        expect(result).toBe(true)
     })
 
     it('return the difference set of other set', () => {
@@ -145,7 +145,7 @@ describe('Data Structure: 04-Set', () => {
         if (differenceSet.length === expectedResult.length) {
             result = expectedResult.every(element => differenceSet.indexOf(element) !== -1)
         }
-        expect(result).toBeTruthy()
+        expect(result).toBe(true)
     })
 
     it('return true of false when check if the subset of other set is or not', () => {
@@ -164,7 +164,7 @@ describe('Data Structure: 04-Set', () => {
         thirdSet.add('e')
         const result1 = firstSet.subset(secondSet)
         const result2 = firstSet.subset(thirdSet)
-        expect(result1).toBeTruthy()
-        expect(result2).toBeFalsy()
+        expect(result1).toBe(true)
+        expect(result2).toBe(false)
     })
 })

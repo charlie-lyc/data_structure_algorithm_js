@@ -1,5 +1,5 @@
 class Node {
-    constructor(data, left = null, right = null) {
+    constructor(data) {
         // Initialize: data, left, right
 
     }
@@ -64,4 +64,4 @@ class BinarySearchTree {
     }
 }
 
-module.exports = BinaryTree
+module.exports = BinarySearchTree

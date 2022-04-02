@@ -87,9 +87,9 @@ describe('Data Structure: 02-Queue', () => {
     })
 
     it('returns true or false when queue is empty or not', () => {
-        expect(queue.isEmpty()).toBeTruthy()
+        expect(queue.isEmpty()).toBe(true)
         queue.enqueue('a')
-        expect(queue.isEmpty()).toBeFalsy()
+        expect(queue.isEmpty()).toBe(false)
     })
 
 })

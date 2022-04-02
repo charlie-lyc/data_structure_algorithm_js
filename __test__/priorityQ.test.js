@@ -88,9 +88,9 @@ describe('Data Structure: 03-PriorityQueue', () => {
     })
 
     it('returns true or false when queue is empty or not', () => {
-        expect(priorityQueue.isEmpty()).toBeTruthy()
+        expect(priorityQueue.isEmpty()).toBe(true)
         priorityQueue.enqueue(['c', 3])
-        expect(priorityQueue.isEmpty()).toBeFalsy()
+        expect(priorityQueue.isEmpty()).toBe(false)
     })
 
 })
