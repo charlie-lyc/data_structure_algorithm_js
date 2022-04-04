@@ -4,8 +4,12 @@ class MinHeap {
         this.heap = [null]
     }
 
-    insert(num) {
-        this.heap.push(num)
+    print() {
+        return this.heap
+    }
+    
+    insert(number) {
+        this.heap.push(number)
         if (this.heap.length > 2) {
             let index = this.heap.length - 1
             while (this.heap[index] < this.heap[Math.floor(index/2)]) {
@@ -25,13 +29,13 @@ class MinHeap {
     removeSmallest() {
         const smallest = this.heap[1]
         if (this.heap.length === 2) {
-            this.heap.splice(1, 1)
-        } else if (this.heap.length > 2) {
-            this.heap[1] = this.heap[this.heap.length - 1]
             /**
              * splice(): mutable method
              * slice(): immutable method
              */
+            this.heap.splice(1, 1)
+        } else if (this.heap.length > 2) {
+            this.heap[1] = this.heap[this.heap.length - 1]
             this.heap.splice(this.heap.length - 1) 
             if (this.heap.length === 3) {
                 if (this.heap[1] > this.heap[2]) {
@@ -67,39 +71,31 @@ class MinHeap {
         while (this.heap.length > 1) {
             result.push(this.removeSmallest())
         }
-        return result
+        if (result.length > 0) {
+            return result
+        }
+        return null
     }
 }
 
 const minHeap = new MinHeap()
+console.log(minHeap.print())          // [ null ]
+console.log(minHeap.removeSmallest()) // null
+console.log(minHeap.sort())           // null
+
 minHeap.insert(4)
+console.log(minHeap.removeSmallest()) // 4
 minHeap.insert(6)
+console.log(minHeap.removeSmallest()) // 6
+
 minHeap.insert(8)
 minHeap.insert(10)
 minHeap.insert(5)
 minHeap.insert(16)
 minHeap.insert(3)
 minHeap.insert(1)
-console.log(minHeap.print())
-// console.log(minHeap.removeSmallest())
-// console.log(minHeap.print())
-// console.log(minHeap.removeSmallest())
-// console.log(minHeap.print())
-// console.log(minHeap.removeSmallest())
-// console.log(minHeap.print())
-// console.log(minHeap.removeSmallest())
-// console.log(minHeap.print())
-// console.log(minHeap.removeSmallest())
-// console.log(minHeap.print())
-// console.log(minHeap.removeSmallest())
-// console.log(minHeap.print())
-// console.log(minHeap.removeSmallest())
-// console.log(minHeap.print())
-// console.log(minHeap.removeSmallest())
-// console.log(minHeap.print())
-// console.log(minHeap.removeSmallest())
-// console.log(minHeap.print())
-console.log(minHeap.sort())
+console.log(minHeap.print()) // [ null, 1, 5, 3, 16, 10, 8 ]
+console.log(minHeap.sort())  // [ 1, 3, 5, 8, 10, 16 ]
 
 ////////////////////////////////////////////////////////////////////////
 /**

@@ -214,9 +214,8 @@ describe('Data Structure: 07-bst', () => {
             for (let i = 0; i < expectedResult.length; i ++) {
                 if (traverseInOrder[i] !== expectedResult[i]) {
                     break
-                }
-                if (i === expectedResult.length - 1) {
-                    if (traverseInOrder[i] === expectedResult[i]) {
+                } else {
+                    if (i === expectedResult.length - 1) {
                         result = true
                         break
                     }
@@ -252,9 +251,8 @@ describe('Data Structure: 07-bst', () => {
             for (let i = 0; i < expectedResult.length; i ++) {
                 if (traverseInPreOrder[i] !== expectedResult[i]) {
                     break
-                }
-                if (i === expectedResult.length - 1) {
-                    if (traverseInPreOrder[i] === expectedResult[i]) {
+                } else {
+                    if (i === expectedResult.length - 1) {
                         result = true
                         break
                     }
@@ -290,9 +288,8 @@ describe('Data Structure: 07-bst', () => {
             for (let i = 0; i < expectedResult.length; i ++) {
                 if (traverseInPostOrder[i] !== expectedResult[i]) {
                     break
-                }
-                if (i === expectedResult.length - 1) {
-                    if (traverseInPostOrder[i] === expectedResult[i]) {
+                } else {
+                    if (i === expectedResult.length - 1) {
                         result = true
                         break
                     }
@@ -328,9 +325,8 @@ describe('Data Structure: 07-bst', () => {
             for (let i = 0; i < expectedResult.length; i ++) {
                 if (traverseInLevelOrder[i] !== expectedResult[i]) {
                     break
-                }
-                if (i === expectedResult.length - 1) {
-                    if (traverseInLevelOrder[i] === expectedResult[i]) {
+                } else {
+                    if (i === expectedResult.length - 1) {
                         result = true
                         break
                     }

@@ -4,8 +4,12 @@ class MaxHeap {
         this.heap = [null]
     }
 
-    insert(num) {
-        this.heap.push(num)
+    print() {
+        return this.heap
+    }
+
+    insert(number) {
+        this.heap.push(number)
         if (this.heap.length > 2) {
             let index = this.heap.length - 1
             while (this.heap[index] > this.heap[Math.floor(index/2)]) {
@@ -25,13 +29,14 @@ class MaxHeap {
     removeGreatest() {
         const greatest = this.heap[1]
         if (this.heap.length === 2) {
-            this.heap.splice(1, 1)
-        } else if (this.heap.length > 2) {
-            this.heap[1] = this.heap[this.heap.length - 1]
             /**
              * splice(): mutable method
              * slice(): immutable method
              */
+            this.heap.splice(1, 1)
+        } else if (this.heap.length > 2) {
+            this.heap[1] = this.heap[this.heap.length - 1]
+
             this.heap.splice(this.heap.length - 1) 
             if (this.heap.length === 3) {
                 if (this.heap[1] < this.heap[2]) {
@@ -67,39 +72,31 @@ class MaxHeap {
         while (this.heap.length > 1) {
             result.push(this.removeGreatest())
         }
-        return result
+        if (result.length > 0) {
+            return result
+        }
+        return null
     }
 }
 
 const maxHeap = new MaxHeap()
+console.log(maxHeap.print())          // [ null ]
+console.log(maxHeap.removeGreatest()) // null
+console.log(maxHeap.sort())           // null
+
 maxHeap.insert(4)
+console.log(maxHeap.removeGreatest()) // 4
 maxHeap.insert(6)
+console.log(maxHeap.removeGreatest()) // 6
+
 maxHeap.insert(8)
 maxHeap.insert(10)
 maxHeap.insert(5)
 maxHeap.insert(16)
 maxHeap.insert(3)
 maxHeap.insert(1)
-console.log(maxHeap.print())
-// console.log(maxHeap.removeGreatest())
-// console.log(maxHeap.print())
-// console.log(maxHeap.removeGreatest())
-// console.log(maxHeap.print())
-// console.log(maxHeap.removeGreatest())
-// console.log(maxHeap.print())
-// console.log(maxHeap.removeGreatest())
-// console.log(maxHeap.print())
-// console.log(maxHeap.removeGreatest())
-// console.log(maxHeap.print())
-// console.log(maxHeap.removeGreatest())
-// console.log(maxHeap.print())
-// console.log(maxHeap.removeGreatest())
-// console.log(maxHeap.print())
-// console.log(maxHeap.removeGreatest())
-// console.log(maxHeap.print())
-// console.log(maxHeap.removeGreatest())
-// console.log(maxHeap.print())
-console.log(maxHeap.sort())
+console.log(maxHeap.print()) // [ null, 16, 10, 5, 8, 3, 1 ]
+console.log(maxHeap.sort())  // [ 16, 10, 8, 5, 3, 1 ]
 
 ////////////////////////////////////////////////////////////////////////
 /**
