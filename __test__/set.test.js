@@ -196,4 +196,14 @@ describe('Data Structure: 04-Set', () => {
         expect(result1).toBe(true)
         expect(result2).toBe(false)
     })
+
+    it('not throw error when check if set is empty', () => {
+        expect(() => firstSet.isEmpty()).not.toThrow()
+    })
+
+    it('return true of false when check if set is empty or not', () => {
+        expect(firstSet.isEmpty()).toBe(true)
+        firstSet.add('a')
+        expect(firstSet.isEmpty()).toBe(false)
+    })
 })

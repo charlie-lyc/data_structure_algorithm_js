@@ -16,15 +16,15 @@ class MySet {
 
     }
 
+    has(element) {
+
+    }
+
     add(element) {
 
     }
 
     remove(element) {
-
-    }
-
-    has(element) {
 
     }
 
@@ -40,8 +40,12 @@ class MySet {
 
     }
 
-    subset(otherSet) {
+    isSubset(otherSet) {
 
+    }
+
+    isEmpty() {
+        
     }
 }
 

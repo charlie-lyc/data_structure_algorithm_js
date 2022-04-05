@@ -32,42 +32,50 @@ describe('Data Structure: 01-Stack', () => {
         expect(() => stack.push()).not.toThrow()
     })
 
-    it('return 2 for the size of stack after adding two items', () => {
+    it('return false for the not given argument when add an element', () => {
+        expect(stack.push()).toBe(false)
+    })
+
+    it('return true for the given argument when add an element', () => {
+        expect(stack.push('a')).toBe(true)
+    })
+
+    it('return 2 for the size of stack after adding two elements', () => {
         stack.push('a')
         stack.push('b')
         expect(stack.size()).toEqual(2)
     })
 
-    it('not throw error when remove an item', () => {
+    it('not throw error when remove an element', () => {
         expect(() => stack.pop()).not.toThrow()
     })
 
-    it('return null when remove an item from an empty stack', () => {
+    it('return null when remove an element from an empty stack', () => {
         expect(stack.pop()).toBeNull()
     })
 
-    it('return 0 for the size of stack after removing more than added items', () => {
+    it('return 0 for the size of stack after removing more than added elements', () => {
         stack.push('a')
         stack.pop()
         stack.pop()
         expect(stack.size()).toEqual(0)
     })
 
-    it('return 1 for the size of stack after adding two items and removing one', () => {
+    it('return 1 for the size of stack after adding two elements and removing one', () => {
         stack.push('a')
         stack.push('b')
         stack.pop()
         expect(stack.size()).toEqual(1)
     })
 
-    it('return the last added item when remove an item', () => {
+    it('return the last added element when remove an element', () => {
         stack.push('a')
         stack.push('b')
         stack.push('c')
         expect(stack.pop()).toMatch(/c/)
     })
 
-    it('adding items sequentially but removing items reversely', () => {
+    it('adding elements sequentially but removing elements reversely', () => {
         stack.push('a')
         stack.push('b')
         stack.push('c')
@@ -80,7 +88,7 @@ describe('Data Structure: 01-Stack', () => {
         expect(() => stack.peek()).not.toThrow()
     })
 
-    it('return the last added item when peek a stack', () => {
+    it('return the last added element when peek a stack', () => {
         stack.push('a')
         stack.push('b')
         stack.push('c')

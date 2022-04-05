@@ -21,49 +21,61 @@ describe('Data Structure: 02-Queue', () => {
         expect(() => queue.print()).not.toThrow()
     })
 
+    it('not throw error when measure the size of a queue', () => {
+        expect(() => queue.size()).not.toThrow()
+    })
+
     it('return 0 for the size of a new queue', () => {
         expect(queue.size()).toEqual(0)
     })
 
-    it('not throw error when add an item', () => {
+    it('not throw error when add an element', () => {
         expect(() => queue.enqueue()).not.toThrow()
     })
 
-    it('return 2 for the size of queue after adding two items', () => {
+    it('return false for the not given argument when add an element', () => {
+        expect(queue.enqueue()).toBe(false)
+    })
+
+    it('return true for the given argument when add an element', () => {
+        expect(queue.enqueue('a')).toBe(true)
+    })
+
+    it('return 2 for the size of queue after adding two elements', () => {
         queue.enqueue('a')
         queue.enqueue('b')
         expect(queue.size()).toEqual(2)
     })
 
-    it('not throw error when remove an item', () => {
+    it('not throw error when remove an element', () => {
         expect(() => queue.dequeue()).not.toThrow()
     })
 
-    it('return null when remove an item from an empty queue', () => {
+    it('return null when remove an element from an empty queue', () => {
         expect(queue.dequeue()).toBeNull()
     })
 
-    it('return 0 for the size of queue after removing more than added items', () => {
+    it('return 0 for the size of queue after removing more than added elements', () => {
         queue.enqueue('a')
         queue.dequeue()
         queue.dequeue()
         expect(queue.size()).toEqual(0)
     })
 
-    it('return 1 for the size of queue after adding two items and removing one', () => {
+    it('return 1 for the size of queue after adding two elements and removing one', () => {
         queue.enqueue('a')
         queue.enqueue('b')
         queue.dequeue()
         expect(queue.size()).toEqual(1)
     })
 
-    it('return the first added item when removing an item', () => {
+    it('return the first added element when removing an element', () => {
         queue.enqueue('a')
         queue.enqueue('b')
         expect(queue.dequeue()).toMatch(/a/)
     })
 
-    it('adding items sequentially and same removing items', () => {
+    it('adding elements sequentially and removing with the same sequence', () => {
         queue.enqueue('a')
         queue.enqueue('b')
         queue.enqueue('c')
@@ -72,21 +84,33 @@ describe('Data Structure: 02-Queue', () => {
         expect(queue.dequeue()).toMatch(/c/)
     })
 
-    it("return the first added item when use 'frontIs' method including 'front' property", () => {
+    it("not throw error when use 'frontIs' method", () => {
+        expect(() => queue.frontIs()).not.toThrow()
+    })
+
+    it("return the first added element when use 'frontIs' method including 'front' property", () => {
         queue.enqueue('a')
         queue.enqueue('b')
         queue.enqueue('c')
         expect(queue.frontIs()).toMatch(/a/)
     })
 
-    it("return the last added item when use 'rearIs' method including 'rear' property", () => {
+    it("not throw error when use 'rearIs' method", () => {
+        expect(() => queue.rearIs()).not.toThrow()
+    })
+
+    it("return the last added element when use 'rearIs' method including 'rear' property", () => {
         queue.enqueue('a')
         queue.enqueue('b')
         queue.enqueue('c')
         expect(queue.rearIs()).toMatch(/c/)
     })
 
-    it('returns true or false when queue is empty or not', () => {
+    it('not throw error when check if queue is empty', () => {
+        expect(() => queue.isEmpty()).not.toThrow()
+    })
+
+    it('returns true or false when check if queue is empty or not', () => {
         expect(queue.isEmpty()).toBe(true)
         queue.enqueue('a')
         expect(queue.isEmpty()).toBe(false)
