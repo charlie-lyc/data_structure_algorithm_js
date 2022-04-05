@@ -19,7 +19,7 @@ class Trie {
 
     }
 
-    add(word, node = this.root) {
+    add(word) {
 
     }
 

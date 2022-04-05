@@ -20,6 +20,10 @@ describe('Data Structure: 01-Stack', () => {
         expect(() => stack.print()).not.toThrow()
     })
 
+    it('not throw error when measure the size of a stack', () => {
+        expect(() => stack.size()).not.toThrow()
+    })
+
     it('return 0 for the size of a new stack', () => {
         expect(stack.size()).toEqual(0)
     })
@@ -72,14 +76,22 @@ describe('Data Structure: 01-Stack', () => {
         expect(stack.pop()).toMatch(/a/)
     })
 
-    it('return the last added item when peeking a stack', () => {
+    it('not throw error when peek a stack', () => {
+        expect(() => stack.peek()).not.toThrow()
+    })
+
+    it('return the last added item when peek a stack', () => {
         stack.push('a')
         stack.push('b')
         stack.push('c')
         expect(stack.peek()).toMatch(/c/)
     })
 
-    it('return true or false when stack is empty or not', () => {
+    it('not throw error when check if stack is empty', () => {
+        expect(() => stack.isEmpty()).not.toThrow()
+    })
+
+    it('return true or false when check if stack is empty or not', () => {
         expect(stack.isEmpty()).toBe(true)
         stack.push('a')
         expect(stack.isEmpty()).toBe(false)

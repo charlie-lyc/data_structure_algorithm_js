@@ -134,16 +134,22 @@ class MySet {
     print() {
         console.log(this.collection)
     }
-    has(element) {
-        return this.collection.indexOf(element) !== -1
-    }
     values() {
         return this.collection
     }
     size() {
         return this.collection.length
     }
+    has(element) {
+        if (element === undefined) {
+            return false
+        }
+        return this.collection.indexOf(element) !== -1
+    }
     add(element) {
+        if (element === undefined) {
+            return false
+        }
         if (!this.has(element)) {
             this.collection.push(element)
             return true
@@ -151,6 +157,9 @@ class MySet {
         return false
     }
     remove(element) {
+        if (element === undefined) {
+            return false
+        }
         if (this.has(element)) {
             const index = this.collection.indexOf(element)
             this.collection.splice(index, 1)
@@ -159,6 +168,9 @@ class MySet {
         return false
     }
     union(otherSet) {
+        if (otherSet === undefined) {
+            return null
+        }
         const unionSet = []
         const firstSet = this.values()
         firstSet.forEach(e => unionSet.push(e))
@@ -171,6 +183,9 @@ class MySet {
         return unionSet
     }
     intersection(otherSet) {
+        if (otherSet === undefined) {
+            return null
+        }
         const intersectionSet = []
         const firstSet = this.values()
         firstSet.forEach(e => {
@@ -181,6 +196,9 @@ class MySet {
         return intersectionSet
     }
     difference(otherSet) {
+        if (otherSet === undefined) {
+            return null
+        }
         const differenceSet = []
         const firstSet = this.values()
         firstSet.forEach(e => {
@@ -190,7 +208,10 @@ class MySet {
         })
         return differenceSet
     }
-    subset(otherSet) {
+    isSubset(otherSet) {
+        if (otherSet === undefined) {
+            return false
+        }
         const firstSet = this.values()
         return firstSet.every(e => otherSet.has(e))
     }
@@ -200,32 +221,54 @@ class MySet {
 }
 
 const firstSet = new MySet()
-console.log(firstSet.isEmpty())
-firstSet.add('a')
-firstSet.add('b')
-firstSet.add('c')
 firstSet.print()
-console.log(firstSet.add('d'))
-console.log(firstSet.add('d'))
-console.log(firstSet.has('d'))
-console.log(firstSet.remove('d'))
-console.log(firstSet.remove('d'))
-console.log(firstSet.has('d'))
-console.log(firstSet.size())
 console.log(firstSet.values())
+console.log(firstSet.size())
+console.log(firstSet.has())
+console.log(firstSet.add())
+console.log(firstSet.remove())
+console.log(firstSet.union())
+console.log(firstSet.union(new MySet()))
+console.log(firstSet.intersection())
+console.log(firstSet.intersection(new MySet()))
+console.log(firstSet.difference())
+console.log(firstSet.difference(new MySet()))
+console.log(firstSet.isSubset())
+console.log(firstSet.isSubset(new MySet()))
+console.log(firstSet.isEmpty())
+
+console.log(firstSet.add('a'))
+console.log(firstSet.add('a'))
+console.log(firstSet.add('b'))
+console.log(firstSet.add('c'))
+console.log(firstSet.add('d'))
+console.log(firstSet.has('d'))
+console.log(firstSet.remove('d'))
+console.log(firstSet.remove('d'))
+console.log(firstSet.values())
+console.log(firstSet.size())
+console.log(firstSet.has('d'))
+
 const secondSet = new MySet()
-secondSet.add('c')
-secondSet.add('d')
-secondSet.add('f')
+console.log(secondSet.isSubset(firstSet))
+console.log(secondSet.add('c'))
+console.log(secondSet.add('d'))
+console.log(secondSet.add('f'))
 console.log(firstSet.values())
 console.log(firstSet.union(secondSet))
+console.log(firstSet.union(new MySet()))
 console.log(firstSet.intersection(secondSet))
+console.log(firstSet.intersection(new MySet()))
 console.log(firstSet.difference(secondSet))
+console.log(firstSet.difference(new MySet()))
+console.log(firstSet.isSubset(secondSet))
+console.log(firstSet.isSubset(new MySet()))
+
 const thirdSet = new MySet()
-thirdSet.add('a')
-thirdSet.add('b')
-thirdSet.add('c')
-thirdSet.add('d')
-thirdSet.add('e')
-console.log(firstSet.subset(thirdSet))
-console.log(secondSet.subset(thirdSet))
+console.log(thirdSet.add('a'))
+console.log(thirdSet.add('b'))
+console.log(thirdSet.add('c'))
+console.log(thirdSet.add('d'))
+console.log(thirdSet.add('e'))
+console.log(firstSet.isSubset(thirdSet))
+console.log(secondSet.isSubset(thirdSet))

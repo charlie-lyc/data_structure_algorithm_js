@@ -14,11 +14,27 @@ describe('Data Structure: 09-Trie', () => {
     })
 
     it('not throw error when add word', () => {
-        expect(() => trie.add('ball')).not.toThrow()
+        expect(() => trie.add()).not.toThrow()
+    })
+
+    it('return false for the not given argument when add word', () => {
+        expect(trie.add()).toBe(false)
+    })
+
+    it('return false for being 0 in the length of given argument when check if word exists', () => {
+        expect(trie.add('')).toBe(false)
     })
 
     it('not throw error when check if word exists in trie', () => {
-        expect(() => trie.isPresent('ball')).not.toThrow()
+        expect(() => trie.isPresent()).not.toThrow()
+    })
+
+    it('return false for the not given argument when check if word exists', () => {
+        expect(trie.isPresent()).toBe(false)
+    })
+
+    it('return false for being 0 in the length of given argument when check if word exists', () => {
+        expect(trie.isPresent('')).toBe(false)
     })
 
     it('return true or false when check if word exists in trie or not', () => {

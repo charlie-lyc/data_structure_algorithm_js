@@ -13,13 +13,14 @@ describe('Data Structure: 04-Set', () => {
         expect(firstSet).toHaveProperty('print')
         expect(firstSet).toHaveProperty('values')
         expect(firstSet).toHaveProperty('size')
+        expect(firstSet).toHaveProperty('has')
         expect(firstSet).toHaveProperty('add')
         expect(firstSet).toHaveProperty('remove')
-        expect(firstSet).toHaveProperty('has')
         expect(firstSet).toHaveProperty('union')
         expect(firstSet).toHaveProperty('intersection')
         expect(firstSet).toHaveProperty('difference')
-        expect(firstSet).toHaveProperty('subset')
+        expect(firstSet).toHaveProperty('isSubset')
+        expect(firstSet).toHaveProperty('isEmpty')
     })
 
     it('not throw error when print a set', () => {
@@ -30,12 +31,34 @@ describe('Data Structure: 04-Set', () => {
         expect(() => firstSet.values()).not.toThrow()
     })
 
+    it('not throw error when measure the size of a set', () => {
+        expect(() => firstSet.size()).not.toThrow()
+    })
+
     it('return 0 for the size of a new set', () => {
         expect(firstSet.size()).toEqual(0)
     })
 
+    it('not throw error when check if element exists in a set', () => {
+        expect(() => firstSet.has()).not.toThrow()
+    })
+
+    it('return false for not given argument when check if element exists', () => {
+        expect(firstSet.has()).toBe(false)
+    })
+
+    it('return true or false when a set has an element or not', () => {
+        firstSet.add('a')
+        expect(firstSet.has('a')).toBe(true)
+        expect(firstSet.has('b')).toBe(false)
+    })
+
     it('not throw error when add an element', () => {
         expect(() => firstSet.add()).not.toThrow()
+    })
+
+    it('return false for not given argument when add an element', () => {
+        expect(firstSet.add()).toBe(false)
     })
 
     it('return true when add an element that not exists in a set', () => {
@@ -67,30 +90,12 @@ describe('Data Structure: 04-Set', () => {
         expect(firstSet.size()).toEqual(1)
     })
 
-    it('return true or false when a set has an element or not', () => {
-        firstSet.add('a')
-        expect(firstSet.has('a')).toBe(true)
-        expect(firstSet.has('b')).toBe(false)
-    })
-
     it('not throw error when find the union set', () => {
-        const otherSet = new MySet()
-        expect(() => firstSet.union(otherSet)).not.toThrow()
+        expect(() => firstSet.union()).not.toThrow()
     })
 
-    it('not throw error when find the intersection set', () => {
-        const otherSet = new MySet()
-        expect(() => firstSet.intersection(otherSet)).not.toThrow()
-    })
-
-    it('not throw error when find the difference set', () => {
-        const otherSet = new MySet()
-        expect(() => firstSet.difference(otherSet)).not.toThrow()
-    })
-
-    it('not throw error when check if the subset is or not', () => {
-        const otherSet = new MySet()
-        expect(() => firstSet.subset(otherSet)).not.toThrow()
+    it('return null for not given argument when find the union set', () => {
+        expect(firstSet.union()).toBeNull()
     })
 
     it('return the union set of other set', () => {
@@ -108,6 +113,14 @@ describe('Data Structure: 04-Set', () => {
             result = expectedResult.every(element => unionSet.indexOf(element) !== -1)
         }
         expect(result).toBe(true)
+    })
+
+    it('not throw error when find the intersection set', () => {
+        expect(() => firstSet.intersection()).not.toThrow()
+    })
+
+    it('return null for not given argument when find the intersection set', () => {
+        expect(firstSet.intersection()).toBeNull()
     })
 
     it('return the intersection set of other set', () => {
@@ -129,6 +142,14 @@ describe('Data Structure: 04-Set', () => {
         expect(result).toBe(true)
     })
 
+    it('not throw error when find the difference set', () => {
+        expect(() => firstSet.difference()).not.toThrow()
+    })
+
+    it('return null for not given argument when find the difference set', () => {
+        expect(firstSet.difference()).toBeNull()
+    })
+
     it('return the difference set of other set', () => {
         const secondSet = new MySet()
         firstSet.add('a')
@@ -148,6 +169,14 @@ describe('Data Structure: 04-Set', () => {
         expect(result).toBe(true)
     })
 
+    it('not throw error when check if the subset of other set is', () => {
+        expect(() => firstSet.isSubset()).not.toThrow()
+    })
+
+    it('return null for not given argument when check if the subset of other set is', () => {
+        expect(firstSet.difference()).toBeNull()
+    })
+
     it('return true of false when check if the subset of other set is or not', () => {
         const secondSet = new MySet()
         const thirdSet = new MySet()
@@ -162,8 +191,8 @@ describe('Data Structure: 04-Set', () => {
         thirdSet.add('b')
         thirdSet.add('d')
         thirdSet.add('e')
-        const result1 = firstSet.subset(secondSet)
-        const result2 = firstSet.subset(thirdSet)
+        const result1 = firstSet.isSubset(secondSet)
+        const result2 = firstSet.isSubset(thirdSet)
         expect(result1).toBe(true)
         expect(result2).toBe(false)
     })

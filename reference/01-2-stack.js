@@ -89,6 +89,9 @@ class Stack {
     print() {
         console.log(this.storage)
     }
+    size() {
+        return this.top
+    }
     push(element) {
         this.storage[this.top] = element
         this.top ++
@@ -105,9 +108,6 @@ class Stack {
     }
     peek() {
         return this.storage[this.top-1]
-    }
-    size() {
-        return this.top
     }
     isEmpty() {
         return this.top === 0

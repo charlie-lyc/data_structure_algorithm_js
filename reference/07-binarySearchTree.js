@@ -165,7 +165,9 @@ class BinarySearchTree {
 
     //////////////////////////////////////////////////////////////////////
     /**
-     * Traversal Order:  In, Pre, Post, Level
+     * Traversal Order
+     * - In, Pre, Post : Depth First Search(DFS)
+     * - Level : Breadth First Search(BFS)
      */
     inOrder() {
         if (this.root === null) {

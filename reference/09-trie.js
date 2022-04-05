@@ -27,20 +27,29 @@ class Trie {
         this.root = new Node()
     }
 
-    add(word, node = this.root) {
-        if (word.length === 0) {
-            node.setEnd()
-            return
+    add(word) {
+        if (word === undefined || word.length === 0) {
+            return false
         }
-        if (!node.keys.has(word[0])) {
-            node.keys.set(word[0], new Node())
-            this.add(word.substr(1), node.keys.get(word[0]))
-        } else {
-            this.add(word.substr(1), node.keys.get(word[0]))
+        const addWord = (wordToAdd, node) => {
+            if (wordToAdd.length === 0) {
+                node.setEnd()
+                return true
+            }
+            if (!node.keys.has(wordToAdd[0])) {
+                node.keys.set(wordToAdd[0], new Node())
+                return addWord(wordToAdd.substr(1), node.keys.get(wordToAdd[0]))
+            } else {
+                return addWord(wordToAdd.substr(1), node.keys.get(wordToAdd[0]))
+            }
         }
+        return addWord(word, this.root)
     }
 
     isPresent(word) {
+        if (word === undefined || word.length === 0) {
+            return false
+        }
         let _word = word.slice()
         let current = this.root
         while (_word.length > 1) {
@@ -84,16 +93,22 @@ class Trie {
 }
 
 const trie = new Trie()
+console.log(trie.add())
+console.log(trie.add(''))
+console.log(trie.isPresent())
+console.log(trie.isPresent(''))
 console.log(trie.printAllWords())
-trie.add('ball') 
-trie.add('bat') 
-trie.add('doll') 
-trie.add('dork') 
-trie.add('do') 
-trie.add('dorm')
-trie.add('send')
-trie.add('sense')
+
+console.log(trie.add('ball')) 
+console.log(trie.add('bat'))
+console.log(trie.add('doll'))
+console.log(trie.add('dork'))
+console.log(trie.add('do'))
+console.log(trie.add('dorm'))
+console.log(trie.add('send'))
+console.log(trie.add('sense'))
 console.log(trie.printAllWords())
+
 console.log(trie.isPresent('ball'))
 console.log(trie.isPresent('bat'))
 console.log(trie.isPresent('doll'))
