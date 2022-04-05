@@ -1,70 +1,23 @@
 /* Priority Queue */
-// const PriorityQueue = function () {
-//     const collection = []
-//     let front = 0
-//     let rear = 0
-//
-//     this.print = () => {
-//         console.log(collection)
-//     }
-//
-//     this.enqueue = (item) => { // item: [element, priority]
-//         if (this.isEmpty()) {
-//             collection.push(item)
-//         } else {
-//             let added = false
-//             for (let i = 0; i < collection.length; i ++) {
-//                 if (item[1] < collection[i][1]) {
-//                     collection.splice(i, 0, item)
-//                     added = true
-//                     break
-//                 }
-//             }
-//             if (!added) {
-//                 collection.push(item)
-//             }
-//         }
-//         rear ++
-//         return
-//     }
-//
-//     this.dequeue = () => {
-//         if (rear === 0) {
-//             return null
-//         }
-//         const result = collection.shift()[0]
-//         rear --
-//         return result
-//     }
-//
-//     this.frontIs = () => {
-//         return collection[front][0]
-//     }
-//
-//     this.rearIs = () => {
-//         return collection[rear - 1][0]
-//     }
-//
-//     this.size = () => {
-//         return rear
-//     }
-//
-//     this.isEmpty = () => {
-//         return rear === 0
-//     }
-// }
-
-///////////////////////////////////////////////////////////////
 class PriorityQueue {
     constructor() {
         this.collection = []
         this.front = 0
         this.rear = 0
     }
+
     print() {
         console.log(this.collection)
     }
+
+    size() {
+        return this.rear
+    }
+
     enqueue(item) { // item: [element, priority]
+        if (item === undefined) {
+            return false
+        }
         if (this.isEmpty()) {
             this.collection.push(item)
         } else {
@@ -81,8 +34,9 @@ class PriorityQueue {
             }
         }
         this.rear ++
-        return
+        return true
     }
+
     dequeue() {
         if (this.rear === 0) {
             return null
@@ -91,31 +45,38 @@ class PriorityQueue {
         this.rear --
         return result
     }
+
     frontIs() {
         return this.collection[this.front][0]
     }
+
     rearIs() {
         return this.collection[this.rear - 1][0]
     }
-    size() {
-        return this.rear
-    }
+
     isEmpty() {
         return this.rear === 0
     }
 }
 
-const priorityQueue = new PriorityQueue()
-priorityQueue.enqueue(['b', 2])
-priorityQueue.enqueue(['a', 1])
-priorityQueue.enqueue(['a', 3])
-priorityQueue.print()
-console.log(priorityQueue.frontIs())
-console.log(priorityQueue.rearIs())
-console.log(priorityQueue.size())
-console.log(priorityQueue.dequeue())
-console.log(priorityQueue.dequeue())
-console.log(priorityQueue.isEmpty())
-console.log(priorityQueue.dequeue())
-console.log(priorityQueue.isEmpty())
-console.log(priorityQueue.dequeue())
+const pq = new PriorityQueue()
+pq.print()
+console.log(pq.size())
+console.log(pq.enqueue())
+console.log(pq.dequeue())
+
+console.log(pq.enqueue(['c', 3]))
+console.log(pq.enqueue(['a', 1]))
+console.log(pq.enqueue(['b', 2]))
+console.log(pq.enqueue(['d', 4]))
+console.log(pq.frontIs())
+console.log(pq.rearIs())
+console.log(pq.size())
+
+console.log(pq.dequeue())
+console.log(pq.dequeue())
+console.log(pq.dequeue())
+console.log(pq.isEmpty())
+console.log(pq.dequeue())
+console.log(pq.isEmpty())
+console.log(pq.dequeue())

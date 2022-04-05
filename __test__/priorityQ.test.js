@@ -1,96 +1,104 @@
 const PriorityQueue = require('../03-priorityQueue')
 
 describe('Data Structure: 03-PriorityQueue', () => {
-    let priorityQueue
+    let pq
 
     beforeEach(() => {
-        priorityQueue = new PriorityQueue()
+        pq = new PriorityQueue()
     })
 
     it('should have required methods', () => {
-        expect(priorityQueue).toHaveProperty('print')
-        expect(priorityQueue).toHaveProperty('size')
-        expect(priorityQueue).toHaveProperty('enqueue')
-        expect(priorityQueue).toHaveProperty('dequeue')
-        expect(priorityQueue).toHaveProperty('frontIs')
-        expect(priorityQueue).toHaveProperty('rearIs')
-        expect(priorityQueue).toHaveProperty('isEmpty')
+        expect(pq).toHaveProperty('print')
+        expect(pq).toHaveProperty('size')
+        expect(pq).toHaveProperty('enqueue')
+        expect(pq).toHaveProperty('dequeue')
+        expect(pq).toHaveProperty('frontIs')
+        expect(pq).toHaveProperty('rearIs')
+        expect(pq).toHaveProperty('isEmpty')
     })
 
     it('not throw error when print a priority queue', () => {
-        expect(() => priorityQueue.print()).not.toThrow()
+        expect(() => pq.print()).not.toThrow()
+    })
+
+    it('not throw error when measure the size of a priority queue', () => {
+        expect(() => pq.size()).not.toThrow()
     })
 
     it('return 0 for the size of a new priority queue', () => {
-        expect(priorityQueue.size()).toEqual(0)
+        expect(pq.size()).toEqual(0)
     })
 
     it('not throw error when add an item', () => {
-        expect(() => priorityQueue.enqueue()).not.toThrow()
+        expect(() => pq.enqueue()).not.toThrow()
     })
 
     it('return 2 for the size of priority queue after adding two items', () => {
-        priorityQueue.enqueue(['c', 3])
-        priorityQueue.enqueue(['a', 1])
-        expect(priorityQueue.size()).toEqual(2)
+        pq.enqueue(['c', 3])
+        pq.enqueue(['a', 1])
+        expect(pq.size()).toEqual(2)
     })
 
     it('not throw error when remove an item', () => {
-        expect(() => priorityQueue.dequeue()).not.toThrow()
+        expect(() => pq.dequeue()).not.toThrow()
     })
 
     it('return null when remove an item from an empty priority queue', () => {
-        expect(priorityQueue.dequeue()).toBeNull()
+        expect(pq.dequeue()).toBeNull()
     })
 
     it('return 0 for the size of priority queue after removing more than added items', () => {
-        priorityQueue.enqueue(['c', 3])
-        priorityQueue.dequeue()
-        priorityQueue.dequeue()
-        expect(priorityQueue.size()).toEqual(0)
+        pq.enqueue(['c', 3])
+        pq.dequeue()
+        pq.dequeue()
+        expect(pq.size()).toEqual(0)
     })
 
     it('return 1 for the size of priority queue after adding two items and removing one', () => {
-        priorityQueue.enqueue(['c', 3])
-        priorityQueue.enqueue(['a', 1])
-        priorityQueue.dequeue()
-        expect(priorityQueue.size()).toEqual(1)
+        pq.enqueue(['c', 3])
+        pq.enqueue(['a', 1])
+        pq.dequeue()
+        expect(pq.size()).toEqual(1)
     })
 
-    it("return the highest priority's element when remove an item from priority queue", () => {
-        priorityQueue.enqueue(['c', 3])
-        priorityQueue.enqueue(['a', 1])
-        priorityQueue.enqueue(['b', 2])
-        expect(priorityQueue.dequeue()).toMatch(/a/)
+    it("return the highest priority's element when remove an item", () => {
+        pq.enqueue(['c', 3])
+        pq.enqueue(['a', 1])
+        pq.enqueue(['b', 2])
+        expect(pq.dequeue()).toMatch(/a/)
     })
 
     it('adding items at the same time sorting in priority order and removing items also in priority order', () => {
-        priorityQueue.enqueue(['c', 3])
-        priorityQueue.enqueue(['a', 1])
-        priorityQueue.enqueue(['b', 2])
-        expect(priorityQueue.dequeue()).toMatch(/a/)
-        expect(priorityQueue.dequeue()).toMatch(/b/)
-        expect(priorityQueue.dequeue()).toMatch(/c/)
+        pq.enqueue(['c', 3])
+        pq.enqueue(['a', 1])
+        pq.enqueue(['b', 2])
+        expect(pq.dequeue()).toMatch(/a/)
+        expect(pq.dequeue()).toMatch(/b/)
+        expect(pq.dequeue()).toMatch(/c/)
     })
 
     it("return the highest priority's element when use 'frontIs' method including 'front' property", () => {
-        priorityQueue.enqueue(['c', 3])
-        priorityQueue.enqueue(['a', 1])
-        priorityQueue.enqueue(['b', 2])
-        expect(priorityQueue.frontIs()).toMatch(/a/)
+        pq.enqueue(['c', 3])
+        pq.enqueue(['a', 1])
+        pq.enqueue(['b', 2])
+        expect(pq.frontIs()).toMatch(/a/)
     })
 
     it("return the lowest priority's element when use 'rearIs' method including 'rear' property", () => {
-        priorityQueue.enqueue(['c', 3])
-        priorityQueue.enqueue(['a', 1])
-        priorityQueue.enqueue(['b', 2])
-        expect(priorityQueue.rearIs()).toMatch(/c/)
+        pq.enqueue(['c', 3])
+        pq.enqueue(['a', 1])
+        pq.enqueue(['b', 2])
+        expect(pq.rearIs()).toMatch(/c/)
     })
 
-    it('returns true or false when queue is empty or not', () => {
-        expect(priorityQueue.isEmpty()).toBe(true)
-        priorityQueue.enqueue(['c', 3])
-        expect(priorityQueue.isEmpty()).toBe(false)
+    it('not throw error when check if priority queue is empty', () => {
+        expect(() => pq.isEmpty()).not.toThrow()
+    })
+
+    it('returns true or false when priority queue is empty or not', () => {
+        expect(pq.isEmpty()).toBe(true)
+        pq.enqueue(['c', 3])
+        expect(pq.isEmpty()).toBe(false)
     })
 
 })
