@@ -8,145 +8,74 @@ const hashFunction = (string, max) => {
 }
 
 //////////////////////////////////////////////////////
-/* Hash Table */
-/* A kind of size limited 3 dimension array */
-// const HashTable = function (limit) {
-//     let storage = []
-//     let storageLimit = limit
-
-//     this.print = () => {
-//         console.log(this.storage)
-//     }
-
-//     this.insert = (key, value) => {
-//         const index = hashFunction(key, storageLimit)
-//         if (storage[index] === undefined) {
-//             storage[index] = [ [key, value] ]
-//             return
-//         }
-//         let inserted = false
-//         for (let i = 0; i < storage[index].length; i ++) {
-//             if (storage[index][i] === undefined) {
-//                 continue
-//             }
-//             if (storage[index][i][0] === key) {
-//                 storage[index][i][1] = value
-//                 inserted = true
-//                 break
-//             }
-//         }
-//         if (inserted === false) {
-//             storage[index].push([key, value])
-//             return
-//         } 
-//     }
-
-//     this.remove = (key) => {
-//         const index = hashFunction(key, storageLimit)
-//         if (storage[index].length === 1 && storage[index][0][0] === key) {
-//             delete storage[index]
-//             return
-//         }
-//         for (let i = 0; i < storage[index].length; i ++) {
-//             if (storage[index][i] === undefined) {
-//                 continue
-//             }
-//             if (storage[index][i][0] === key) {
-//                 delete storage[index][i]
-//                 return
-//             }
-//         }
-//         return
-//     }
-
-//     this.lookup = (key) => {
-//         const index = hashFunction(key, storageLimit)
-//         if (storage[index] === undefined) {
-//             return undefined
-//         }
-//         for (let i = 0; i < storage[index].length; i ++) {
-//             if (storage[index][i] === undefined) {
-//                 continue
-//             }
-//             if (storage[index][i][0] === key) {
-//                 return storage[index][i][1]
-//             }
-//         }
-//         return undefined
-//     }
-
-//     this.resize = (newLimit) => {
-//         storageLimit = newLimit
-//         if (storage.length !== 0) {
-//             const newStorage = []
-//             storage.forEach(element => {
-//                 element.forEach(ele => {
-//                     const index = hashFunction(ele[0], storageLimit)
-//                     if (newStorage[index] === undefined) {
-//                         newStorage[index] = [ [ele[0], ele[1]] ]
-//                     } else {
-//                         newStorage[index].push([ele[0], ele[1]])
-//                     }
-//                 })
-//             })
-//             storage = newStorage
-//         }
-//         return
-//     }
-// }
-
-////////////////////////////////////////////////////////////////
+/**
+ * Hash Table
+ * : Here is a kind of size-limited 3 dimension array
+ */
 class HashTable {
     constructor(limit) {
         this.storage = []
         this.storageLimit = limit
     }
+
     print() {
         console.log(this.storage)
     }
+
     insert(key, value) {
+        if (key === undefined || typeof key !== 'string' || value === undefined ) {
+            return false
+        }
         const index = hashFunction(key, this.storageLimit)
         if (this.storage[index] === undefined) {
             this.storage[index] = [ [key, value] ]
-            return
-        }
-        let inserted = false
-        for (let i = 0; i < this.storage[index].length; i ++) {
-            if (this.storage[index][i] === undefined) {
-                continue
+        } else {
+            let inserted = false
+            for (let i = 0; i < this.storage[index].length; i ++) {
+                if (this.storage[index][i] === undefined) {
+                    continue
+                }
+                if (this.storage[index][i][0] === key) {
+                    this.storage[index][i][1] = value
+                    inserted = true
+                    break
+                }
             }
-            if (this.storage[index][i][0] === key) {
-                this.storage[index][i][1] = value
-                inserted = true
-                break
+            if (inserted === false) {
+                this.storage[index].push([key, value])
             }
         }
-        if (inserted === false) {
-            this.storage[index].push([key, value])
-            return
-        } 
+        return true
     }
+
     remove(key) {
-        if (this.storage.length === 0) {
-            return 
+        if (key === undefined || typeof key !== 'string' || this.storage.length === 0) {
+            return false
         }
         const index = hashFunction(key, this.storageLimit)
+        let removed = false
         if (this.storage[index].length === 1 && this.storage[index][0][0] === key) {
             delete this.storage[index]
-            return
-        }
-        for (let i = 0; i < this.storage[index].length; i ++) {
-            if (this.storage[index][i] === undefined) {
-                continue
+            removed = true
+        } else {
+            for (let i = 0; i < this.storage[index].length; i ++) {
+                if (this.storage[index][i] === undefined) {
+                    continue
+                }
+                if (this.storage[index][i][0] === key) {
+                    delete this.storage[index][i]
+                    removed = true
+                    break
+                }
             }
-            if (this.storage[index][i][0] === key) {
-                delete this.storage[index][i]
-                return
-            }
         }
-        return
+        return removed
     }
+
     lookup(key) {
+        if (key === undefined || typeof key !== 'string' || this.storage.length === 0) {
+            return undefined
+        }
         const index = hashFunction(key, this.storageLimit)
         if (this.storage[index] === undefined) {
             return undefined
@@ -161,6 +90,7 @@ class HashTable {
         }
         return undefined
     }
+
     resize(newLimit) {
         this.storageLimit = newLimit
         if (this.storage.length !== 0) {

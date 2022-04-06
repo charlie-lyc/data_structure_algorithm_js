@@ -1,6 +1,7 @@
 const hashFunction = (string, max) => {
     // Start initializing: hash
-    // And use accumulating 'string.charCodeAt()', '%', and 'max'
+    // and use accumulating 'string.charCodeAt()'
+    // and use '%' and 'max'
 
 }
 

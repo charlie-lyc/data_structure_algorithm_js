@@ -1,3 +1,4 @@
+/* Graph */
 class Graph {
     constructor() {
         this.nodes = {}

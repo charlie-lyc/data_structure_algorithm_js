@@ -1,4 +1,4 @@
-/* Graph: Breadth First Search */
+/* Breadth First Search in Graph */
 class BFSGraph {
     constructor(graph, root) {
         this.graph = graph

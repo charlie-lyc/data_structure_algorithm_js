@@ -25,6 +25,9 @@ class LinkedList {
     }
 
     add(data) {
+        if (data === undefined) {
+            return false
+        }
         const node = new Node(data)
         if (this.head === null) {
             this.head = node
@@ -36,12 +39,28 @@ class LinkedList {
             current.next = node
         }
         this.length ++
-        return
+        return true
+    }
+
+    indexOf(data) {
+        if (data === undefined || this.head === null) {
+            return -1
+        }
+        let current = this.head
+        let index = 0
+        while (current !== null) {
+            if (current.data === data) {
+                return index
+            }
+            current = current.next
+            index ++
+        }
+        return -1
     }
 
     remove(data) {
-        if (this.head === null) {
-            return
+        if (this.indexOf(data) === -1) {
+            return false
         }
         let current = this.head
         if (current.data === data) {
@@ -59,26 +78,13 @@ class LinkedList {
                 }
             }
         }
-        return
-    }
-
-    indexOf(data) {
-        if (this.head === null) {
-            return -1
-        }
-        let current = this.head
-        let index = 0
-        while (current !== null) {
-            if (current.data === data) {
-                return index
-            }
-            current = current.next
-            index ++
-        }
-        return -1
+        return true
     }
 
     dataAt(index) {
+        if (index === undefined) {
+            return undefined
+        }
         if (0 > index || index > this.length - 1) {
             return undefined
         }
@@ -94,8 +100,11 @@ class LinkedList {
     }
 
     addAt(index, data) {
+        if (index === undefined || data === undefined) {
+            return false
+        }
         if (0 > index || index > this.length) {
-            return
+            return false
         }
         const node = new Node(data)
         let current = this.head
@@ -122,12 +131,15 @@ class LinkedList {
                 }
             }
         }
-        return
+        return true
     }
 
     removeAt(index) {
+        if (index === undefined) {
+            return false
+        }
         if (0 > index || index > this.length - 1) {
-            return
+            return false
         }
         let current = this.head
         if (index === 0) {
@@ -138,22 +150,22 @@ class LinkedList {
                     this.head = current.next
                 }
                 this.length --
-                return
+            }
+        } else if (index !== 0) {
+            let previous
+            let currentIndex = 0
+            while (current !== null) {
+                previous = current
+                current = current.next
+                currentIndex ++
+                if (currentIndex === index) {
+                    previous.next = current.next
+                    this.length --
+                    break
+                }
             }
         }
-        let previous
-        let currentIndex = 0
-        while (current !== null) {
-            previous = current
-            current = current.next
-            currentIndex ++
-            if (currentIndex === index) {
-                previous.next = current.next
-                this.length --
-                break
-            }
-        }
-        return
+        return true
     }
 }
 
@@ -162,23 +174,29 @@ const linkedList = new LinkedList()
 console.log(linkedList._head())
 console.log(linkedList.size())
 console.log(linkedList.isEmpty())
+console.log(linkedList.add())
+console.log(linkedList.remove())
 console.log(linkedList.remove('Kitten'))
 console.log(linkedList.indexOf('Kitten'))
+console.log(linkedList.dataAt())
 console.log(linkedList.dataAt(0))
+console.log(linkedList.addAt())
+console.log(linkedList.addAt(1, 'Kitten'))
+console.log(linkedList.removeAt())
 console.log(linkedList.removeAt(0))
 
-linkedList.addAt(0, 'Kitten')
-linkedList.removeAt(0)
+console.log(linkedList.addAt(0, 'Kitten'))
+console.log(linkedList.removeAt(0))
 
-linkedList.add('Kitten')
-linkedList.add('Puppy')
-linkedList.add('Dog')
-linkedList.add('Cat')
-linkedList.add('Fish')
+console.log(linkedList.add('Kitten'))
+console.log(linkedList.add('Puppy'))
+console.log(linkedList.add('Dog'))
+console.log(linkedList.add('Cat'))
+console.log(linkedList.add('Fish'))
 console.log(linkedList.isEmpty())
 
-linkedList.remove('Kitten')
-linkedList.remove('Fish')
+console.log(linkedList.remove('Kitten'))
+console.log(linkedList.remove('Fish'))
 console.log(linkedList._head())
 console.log(linkedList.size())
 
@@ -190,19 +208,19 @@ console.log(linkedList.dataAt(0))
 console.log(linkedList.dataAt(1))
 console.log(linkedList.dataAt(2))
 
-linkedList.addAt(0, 'Kitten')
+console.log(linkedList.addAt(0, 'Kitten'))
 console.log(linkedList.indexOf('Kitten'))
-linkedList.addAt(4, 'Fish')
+console.log(linkedList.addAt(4, 'Fish'))
 console.log(linkedList.indexOf('Fish'))
 
-linkedList.addAt(-1, 'hello')
+console.log(linkedList.addAt(-1, 'hello'))
 console.log(linkedList.indexOf('hello'))
-linkedList.addAt(6, 'hello')
+console.log(linkedList.addAt(6, 'hello'))
 console.log(linkedList.indexOf('hello'))
 
 console.log(linkedList.dataAt(0))
-linkedList.removeAt(0)
+console.log(linkedList.removeAt(0))
 console.log(linkedList.dataAt(0))
 console.log(linkedList.dataAt(3))
-linkedList.removeAt(3)
+console.log(linkedList.removeAt(3))
 console.log(linkedList.dataAt(3))
