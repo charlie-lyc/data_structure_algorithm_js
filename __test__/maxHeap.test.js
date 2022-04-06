@@ -1,7 +1,7 @@
 const MaxHeap = require('../11-maxHeap')
 
 describe('Data Structure: 11-MaxHeap', () => {
-    let maxHeap
+    let maxHeap 
 
     beforeEach(() => {
         maxHeap = new MaxHeap()
@@ -18,24 +18,36 @@ describe('Data Structure: 11-MaxHeap', () => {
         expect(() => maxHeap.print()).not.toThrow()
     })
 
-    it('return the array with only null element when print an empty max heap', () => {
+    it('return the array with only null element when print a newly generated heap', () => {
         expect(maxHeap.print().length).toEqual(1)
         expect(maxHeap.print()[0]).toBeNull()
     })
 
-    it('not throw error when insert number', () => {
+    it('not throw error when insert number to max heap', () => {
         expect(() => maxHeap.insert()).not.toThrow()
     })
 
-    it('return the array with null and added number when insert number to max heap', () => {
+    it('return false for the not given argument when insert number', () => {
+        expect(maxHeap.insert()).toBe(false)
+    })
+
+    it("return false for the argument of not 'number' type when insert number", () => {
+        expect(maxHeap.insert('a')).toBe(false)
+    })
+
+    it('return the array with null and added number when insert number', () => {
         maxHeap.insert(4)
         expect(maxHeap.print().length).toEqual(2)
         expect(maxHeap.print()[0]).toBeNull()
         expect(maxHeap.print()[1]).toEqual(4)
     })
 
-    it('not throw error when remove the greatest number', () => {
+    it('not throw error when remove the greatest number from max heap', () => {
         expect(() => maxHeap.removeGreatest()).not.toThrow()
+    })
+
+    it('return null when remove the greatest number from a newly generated min heap', () => {
+        expect(maxHeap.removeGreatest()).toBeNull()
     })
 
     it('return the greatest number when remove the greatest number', () => {
@@ -55,7 +67,7 @@ describe('Data Structure: 11-MaxHeap', () => {
         expect(() => maxHeap.sort()).not.toThrow()
     })
 
-    it('return null when sort an empty max heap', () => {
+    it('return null when sort a newly generated max heap', () => {
         expect(maxHeap.sort()).toBeNull()
     })
 

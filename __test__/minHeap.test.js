@@ -18,24 +18,36 @@ describe('Data Structure: 10-MinHeap', () => {
         expect(() => minHeap.print()).not.toThrow()
     })
 
-    it('return the array with only null element when print an empty min heap', () => {
+    it('return the array with only null element when print a newly generated min heap', () => {
         expect(minHeap.print().length).toEqual(1)
         expect(minHeap.print()[0]).toBeNull()
     })
 
-    it('not throw error when insert number', () => {
+    it('not throw error when insert number to min heap', () => {
         expect(() => minHeap.insert()).not.toThrow()
     })
 
-    it('return the array with null and added number when insert number to min heap', () => {
+    it('return false for the not given argument when insert number', () => {
+        expect(minHeap.insert()).toBe(false)
+    })
+
+    it("return false for the argument of not 'number' type when insert number", () => {
+        expect(minHeap.insert('a')).toBe(false)
+    })
+
+    it('return the array with null and added number when insert number', () => {
         minHeap.insert(4)
         expect(minHeap.print().length).toEqual(2)
         expect(minHeap.print()[0]).toBeNull()
         expect(minHeap.print()[1]).toEqual(4)
     })
 
-    it('not throw error when remove the smallest number', () => {
+    it('not throw error when remove the smallest number from min heap', () => {
         expect(() => minHeap.removeSmallest()).not.toThrow()
+    })
+
+    it('return null when remove the smallest number from a newly generated min heap', () => {
+        expect(minHeap.removeSmallest()).toBeNull()
     })
 
     it('return the smallest number when remove the smallest number', () => {
@@ -55,7 +67,7 @@ describe('Data Structure: 10-MinHeap', () => {
         expect(() => minHeap.sort()).not.toThrow()
     })
 
-    it('return null when sort an empty min heap', () => {
+    it('return null when sort a newly generated min heap', () => {
         expect(minHeap.sort()).toBeNull()
     })
 

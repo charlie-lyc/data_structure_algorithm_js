@@ -9,6 +9,9 @@ class MinHeap {
     }
     
     insert(number) {
+        if (number === undefined || typeof number !== 'number') {
+            return false
+        }
         this.heap.push(number)
         if (this.heap.length > 2) {
             let index = this.heap.length - 1
@@ -23,7 +26,7 @@ class MinHeap {
                 }
             }
         }
-        return
+        return true
     }
 
     removeSmallest() {
@@ -79,21 +82,23 @@ class MinHeap {
 }
 
 const minHeap = new MinHeap()
+console.log(minHeap.insert())
+console.log(minHeap.insert('a'))
 console.log(minHeap.print())          // [ null ]
 console.log(minHeap.removeSmallest()) // null
 console.log(minHeap.sort())           // null
 
-minHeap.insert(4)
+console.log(minHeap.insert(4))
 console.log(minHeap.removeSmallest()) // 4
-minHeap.insert(6)
+console.log(minHeap.insert(6))
 console.log(minHeap.removeSmallest()) // 6
 
-minHeap.insert(8)
-minHeap.insert(10)
-minHeap.insert(5)
-minHeap.insert(16)
-minHeap.insert(3)
-minHeap.insert(1)
+console.log(minHeap.insert(8))
+console.log(minHeap.insert(10))
+console.log(minHeap.insert(5))
+console.log(minHeap.insert(16))
+console.log(minHeap.insert(3))
+console.log(minHeap.insert(1))
 console.log(minHeap.print()) // [ null, 1, 5, 3, 16, 10, 8 ]
 console.log(minHeap.sort())  // [ 1, 3, 5, 8, 10, 16 ]
 

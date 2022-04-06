@@ -9,6 +9,9 @@ class MaxHeap {
     }
 
     insert(number) {
+        if (number === undefined || typeof number !== 'number') {
+            return false
+        }
         this.heap.push(number)
         if (this.heap.length > 2) {
             let index = this.heap.length - 1
@@ -23,7 +26,7 @@ class MaxHeap {
                 }
             }
         }
-        return
+        return true
     }
 
     removeGreatest() {
@@ -36,7 +39,6 @@ class MaxHeap {
             this.heap.splice(1, 1)
         } else if (this.heap.length > 2) {
             this.heap[1] = this.heap[this.heap.length - 1]
-
             this.heap.splice(this.heap.length - 1) 
             if (this.heap.length === 3) {
                 if (this.heap[1] < this.heap[2]) {
@@ -80,21 +82,23 @@ class MaxHeap {
 }
 
 const maxHeap = new MaxHeap()
+console.log(maxHeap.insert())
+console.log(maxHeap.insert('a'))
 console.log(maxHeap.print())          // [ null ]
 console.log(maxHeap.removeGreatest()) // null
 console.log(maxHeap.sort())           // null
 
-maxHeap.insert(4)
+console.log(maxHeap.insert(4))
 console.log(maxHeap.removeGreatest()) // 4
-maxHeap.insert(6)
+console.log(maxHeap.insert(6))
 console.log(maxHeap.removeGreatest()) // 6
 
-maxHeap.insert(8)
-maxHeap.insert(10)
-maxHeap.insert(5)
-maxHeap.insert(16)
-maxHeap.insert(3)
-maxHeap.insert(1)
+console.log(maxHeap.insert(8))
+console.log(maxHeap.insert(10))
+console.log(maxHeap.insert(5))
+console.log(maxHeap.insert(16))
+console.log(maxHeap.insert(3))
+console.log(maxHeap.insert(1))
 console.log(maxHeap.print()) // [ null, 16, 10, 5, 8, 3, 1 ]
 console.log(maxHeap.sort())  // [ 16, 10, 8, 5, 3, 1 ]
 
