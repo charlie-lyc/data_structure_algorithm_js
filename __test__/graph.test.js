@@ -16,7 +16,7 @@ describe('Data Structure: 12-Graph', () => {
         expect(graph).toHaveProperty('removeNode')
         expect(graph).toHaveProperty('removeEdge')
         expect(graph).toHaveProperty('convertToMatrix')
-        expect(graph).toHaveProperty('bfsGraphLengthFrom')
+        expect(graph).toHaveProperty('nodesLengthFrom')
     })
 
     it('not throw error when check if node exists in graph', () => {

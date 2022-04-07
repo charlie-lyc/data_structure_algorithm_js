@@ -59,7 +59,7 @@ describe('Data Structure: 05-HashTable', () => {
         expect(ht.lookup('beautiful')).toBeUndefined()
     })
 
-    it('return the value or undefined when look up key that exists or not in a hash table', () => {
+    it('return the value or undefined when look up key that exists or not', () => {
         ht.insert('beautiful', 'person')
         expect(ht.lookup('beautiful')).toMatch(/person/)
         expect(ht.lookup('fido')).toBeUndefined()
@@ -83,11 +83,11 @@ describe('Data Structure: 05-HashTable', () => {
         expect(ht.remove(1)).toBe(false)
     })
 
-    it('return false when remove key that not exists in a hash table', () => {
+    it('return false when remove key that not exists', () => {
         expect(ht.remove('beautiful')).toBe(false)
     })
 
-    it('return true when remove key that exists in a hash table', () => {
+    it('return true when remove key that exists', () => {
         ht.insert('beautiful', 'person')
         expect(ht.remove('beautiful')).toBe(true)
     })
@@ -127,7 +127,7 @@ describe('Data Structure: 05-HashTable', () => {
         expect(ht.resize(6)).toBe(true)
     })
 
-    it('possible to resize the hash table in a new limit size', () => {
+    it('possible to resize the hash table in a new limit', () => {
         ht.insert('beautiful', 'person')
         ht.insert('fido', 'dog')
         ht.insert('rex', 'dinosaur')

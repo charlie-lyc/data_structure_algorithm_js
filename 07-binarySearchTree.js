@@ -15,23 +15,23 @@ class BinarySearchTree {
 
     }
 
+    isPresent(data) {
+
+    }
+
+    remove(data) {
+
+    }
+
+    findNode(data) {
+
+    }
+
     findMin() {
 
     }
 
     findMax() {
-
-    }
-
-    isPresent(data) {
-
-    }
-
-    findNodeTree(data) {
-
-    }
-
-    remove(data) {
 
     }
 

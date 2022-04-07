@@ -13,6 +13,9 @@ class BinarySearchTree {
     }
 
     add(data) {
+        if (data === undefined || typeof data !== 'number') {
+            return false
+        }
         if (this.root === null) {
             this.root = new Node(data)
             return true
@@ -41,6 +44,74 @@ class BinarySearchTree {
         return searchTreeAndAddNode(this.root)
     }
 
+    isPresent(data) {
+        if (data === undefined || typeof data !== 'number' || this.root === null) {
+            return false
+        }
+        let current = this.root
+        while (current !== null) {
+            if (current.data === data) {
+                return true
+            }
+            if (current.data > data) {
+                current = current.left
+            } else if (current.data < data) {
+                current = current.right
+            }
+        }
+        return false
+    }
+
+    remove(data) {
+        if (data === undefined || typeof data !== 'number' || !this.isPresent(data)) {
+            return false
+        }
+        /********************************************************/ 
+        const searchTreeAndRemoveNode = (node, dataToRemove) => {
+            if (node.data === dataToRemove) {
+                if (node.left === null && node.right === null) {
+                    return null
+                } else if (node.left === null) {
+                    return node.right
+                } else if (node.right === null) {
+                    return node.left
+                }
+                // Condition: (node.left !== null && node.right !== null)
+                let temporaryNode = node.right
+                while (temporaryNode.left) {
+                    temporaryNode = temporaryNode.left
+                }
+                node.data = temporaryNode.data
+                node.right = searchTreeAndRemoveNode(node.right, temporaryNode.data)
+            } else if (node.data > dataToRemove) {
+                node.left = searchTreeAndRemoveNode(node.left, dataToRemove)
+            } else if (node.data < dataToRemove) {
+                node.right = searchTreeAndRemoveNode(node.right, dataToRemove)
+            }
+            return node
+        }
+        /********************************************************/
+        this.root = searchTreeAndRemoveNode(this.root, data)
+        return true
+    }
+
+    findNode(data) {
+        if (data === undefined || typeof data !== 'number' || !this.isPresent(data)) {
+            return null
+        }
+        let current = this.root
+        while (current !== null) {
+            if (current.data === data) {
+                return current
+            }
+            if (current.data > data) {
+                current = current.left
+            } else if (current.data < data) {
+                current = current.right
+            }
+        }
+    }
+
     findMin() {
         if (this.root === null) {
             return null
@@ -63,69 +134,8 @@ class BinarySearchTree {
         return current.data
     }
 
-    isPresent(data) {
-        let current = this.root
-        while (current !== null) {
-            if (current.data === data) {
-                return true
-            }
-            if (current.data > data) {
-                current = current.left
-            } else if (current.data < data) {
-                current = current.right
-            }
-        }
-        return false
-    }
-
-    findNodeTree(data) {
-        let current = this.root
-        while (current !== null) {
-            if (current.data === data) {
-                return current
-            }
-            if (current.data > data) {
-                current = current.left
-            } else if (current.data < data) {
-                current = current.right
-            }
-        }
-        return null
-    }
-
-    remove(data) {
-        /********************************************************/ 
-        const searchTreeAndRemoveNode = (node, data) => {
-            if (node === null) {
-                return null
-            }
-            if (node.data === data) {
-                if (node.left === null && node.right === null) {
-                    return null
-                } else if (node.left === null) {
-                    return node.right
-                } else if (node.right === null) {
-                    return node.left
-                }
-                // Condition: (node.left !== null && node.right !== null)
-                let temporaryNode = node.right
-                while (temporaryNode.left) {
-                    temporaryNode = temporaryNode.left
-                }
-                node.data = temporaryNode.data
-                node.right = searchTreeAndRemoveNode(node.right, temporaryNode.data)
-            } else if (node.data > data) {
-                node.left = searchTreeAndRemoveNode(node.left, data)
-            } else if (node.data < data) {
-                node.right = searchTreeAndRemoveNode(node.right, data)
-            }
-            return node
-        }
-        /********************************************************/
-        this.root = searchTreeAndRemoveNode(this.root, data)
-    }
-
     //////////////////////////////////////////////////////////////////////
+
     findMinHeight(node = this.root) {
         if (node === null) {
             return -1
@@ -152,6 +162,8 @@ class BinarySearchTree {
         }
     }
 
+    //////////////////////////////////////////////////////////////////////
+
     /**
      * Binary Tree: Perfect, Full, Complete, Balanced, Degenerate
      * https://towardsdatascience.com/5-types-of-binary-tree-with-cool-illustrations-9b335c430254
@@ -163,7 +175,6 @@ class BinarySearchTree {
         return this.findMinHeight() >= this.findMaxHeight() - 1
     }
 
-    //////////////////////////////////////////////////////////////////////
     /**
      * Traversal Order
      * - In, Pre, Post : Depth First Search(DFS)
@@ -248,11 +259,19 @@ class BinarySearchTree {
 }
 
 const bst = new BinarySearchTree()
+console.log(bst.add())
+console.log(bst.add('a'))
+console.log(bst.isPresent())
+console.log(bst.isPresent('a'))
+console.log(bst.isPresent(4))
+console.log(bst.remove())
+console.log(bst.remove('a'))
+console.log(bst.remove(4))
+console.log(bst.findNode())
+console.log(bst.findNode('a'))
+console.log(bst.findNode(4))
 console.log(bst.findMin())
 console.log(bst.findMax())
-console.log(bst.isPresent(4))
-console.log(bst.findNodeTree(4))
-bst.remove()
 console.log(bst.findMinHeight())
 console.log(bst.findMaxHeight())
 console.log(bst.isBalanced())
@@ -262,39 +281,45 @@ console.log(bst.postOrder())
 console.log(bst.levelOrder())
 
 console.log(bst.add(4))
-console.log(bst.add(4))
+console.log(bst.add(4)) // false
 console.log(bst.add(2))
 console.log(bst.add(6))
 console.log(bst.add(1))
 console.log(bst.add(3))
 console.log(bst.add(5))
 console.log(bst.add(7))
+console.log(bst.root)
 //              4
 //         2          6
 //     1      3    5     7
-console.log(bst)
-console.log(bst.findNodeTree(2))
-console.log(bst.findNodeTree(6))
-console.log(bst.findMin())
-console.log(bst.findMax())
+console.log(bst.isPresent(8)) // false
 console.log(bst.isPresent(2))
 console.log(bst.isPresent(6))
-console.log(bst.findMinHeight())
-console.log(bst.findMaxHeight())
-console.log(bst.isBalanced())
-bst.remove(4)
-bst.remove(7)
+console.log(bst.findNode(2))
+console.log(bst.findNode(6))
+console.log(bst.findMin())
+console.log(bst.findMax())
+console.log(bst.findMinHeight()) // 2
+console.log(bst.findMaxHeight()) // 2
+console.log(bst.isBalanced()) // true
+
+console.log(bst.remove(4))
+console.log(bst.remove(7))
 //              5
 //         2          6
-//     1      3          
+//     1      3         
+console.log(bst.findMinHeight()) // 1
+console.log(bst.findMaxHeight()) // 2
+console.log(bst.isBalanced()) // true 
+
 console.log(bst.add(0))
 //              5
 //         2          6
 //     1      3
 // 0          
-console.log(bst.findMinHeight())
-console.log(bst.findMaxHeight())
-console.log(bst.isBalanced())
+console.log(bst.findMinHeight()) // 1
+console.log(bst.findMaxHeight()) // 3
+console.log(bst.isBalanced()) // false
 
 console.log(bst.inOrder())   // [0, 1, 2, 3, 5, 6]
 console.log(bst.preOrder())  // [5, 2, 1, 0, 3, 6]
@@ -302,8 +327,8 @@ console.log(bst.postOrder()) // [0, 1, 3, 2, 6, 5]
 console.log(bst.levelOrder())// [5, 2, 6, 1, 3, 0]
 
 console.log(bst.add(4))
-console.log(bst.findMinHeight())
-console.log(bst.findMaxHeight())
+console.log(bst.findMinHeight()) // 1
+console.log(bst.findMaxHeight()) // 3
 
-bst.remove(1)
-bst.remove(3)
+console.log(bst.remove(1))
+console.log(bst.remove(3))

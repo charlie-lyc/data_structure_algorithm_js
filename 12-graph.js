@@ -32,7 +32,7 @@
 
 //     }
 
-//     bfsGraph(rootNode) {
+//     nodeLengthFrom(rootNode) {
 
 //     }
 // }
@@ -51,10 +51,16 @@ class Graph {
     }
 
     hasNode(node) {
+        if (node === undefined) {
+            return false
+        }
         return node in this.nodes
     }
 
     addNode(node) {
+        if (node === undefined) {
+            return false
+        }
         if (!this.hasNode(node)) {
             this.nodes[node] = []
             return true
@@ -66,6 +72,9 @@ class Graph {
     }
 
     hasEdge(from, to){
+        if (from === undefined || to === undefined) {
+            return false
+        }
         if (this.hasNode(from) && this.hasNode(to)) {
             if (this.nodes[from].indexOf(to) !== -1) {
                 return true
@@ -77,10 +86,10 @@ class Graph {
     }
 
     addEdge(from, to) {
-        if (!this.hasNode(from) || !this.hasNode(to)) {
+        if (from === undefined || to === undefined) {
             return false
         }
-        if (!this.hasEdge(from, to)) {
+        if (this.hasNode(from) && this.hasNode(to) && !this.hasEdge(from, to)) {
             this.nodes[from].push(to)
             return true
         }
@@ -88,6 +97,9 @@ class Graph {
     }   
 
     removeNode(node) {
+        if (node === undefined) {
+            return false
+        }
         if (this.hasNode(node)) {
             delete this.nodes[node]
             return true
@@ -96,6 +108,9 @@ class Graph {
     }
 
     removeEdge(from, to) {
+        if (from === undefined || to === undefined) {
+            return false
+        }
         if (this.hasEdge(from, to)) {
             const index = this.nodes[from].indexOf(to)
             this.nodes[from].splice(index, 1)
@@ -128,8 +143,8 @@ class Graph {
      * Breadth First Search(BFS) in Graph
      */
     /* Length of nodes from root node */
-    bfsGraphLengthFrom(rootNode) {
-        if (!this.hasNode(rootNode)) {
+    nodesLengthFrom(rootNode) {
+        if (rootNode === undefined || !this.hasNode(rootNode)) {
             return null
         }
         const matrix = this.convertToMatrix()
@@ -168,13 +183,25 @@ class Graph {
 
 module.exports = Graph
 
-/////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////
 
 // const graph = new Graph()
+// console.log(graph.hasNode())
 // console.log(graph.hasNode(0))
+// console.log(graph.addNode())
+// console.log(graph.hasEdge())
 // console.log(graph.hasEdge(0))
+// console.log(graph.hasEdge(0, 1))
+// console.log(graph.addEdge())
+// console.log(graph.addEdge(0))
+// console.log(graph.addEdge(0, 1))
+// console.log(graph.removeNode())
 // console.log(graph.removeNode(0))
+// console.log(graph.removeEdge())
 // console.log(graph.removeEdge(0))
+// console.log(graph.removeEdge(0, 1))
+// console.log(graph.lengthFrom())
+// console.log(graph.lengthFrom(0))
 
 // console.log(graph.addNode(0))
 // console.log(graph.addNode(0))
@@ -182,7 +209,7 @@ module.exports = Graph
 // console.log(graph.addNode(2))
 // console.log(graph.addNode(3))
 // console.log(graph.addNode(4))
-// console.log(graph.nodes)             // { 0: [], 1: [], 2: [], 3: [], 4: [] }
+// console.log(graph.nodes)                 // { 0: [], 1: [], 2: [], 3: [], 4: [] }
 // console.log(graph.addEdge(0, 1))
 // console.log(graph.addEdge(0, 1))
 // console.log(graph.addEdge(0, 2))
@@ -204,4 +231,4 @@ module.exports = Graph
 // console.log(graph.nodes)                 // { 0: [1, 2, 3], 1: [2], 2: [0, 1], 3: [], 4: [1] }
 
 // console.log(graph.convertToMatrix())     // [ [0, 1, 1, 1, 0], [0, 0, 1, 0, 0], [1, 1, 0, 0, 0], [0, 0, 0, 1, 0], [0, 1, 0, 0, 0] ]
-// console.log(graph.bfsGraphLengthFrom(1)) // { 0: 2, 1: 0, 2: 1, 3: 3, 4: Infinity }
+// console.log(graph.nodesLengthFrom(1)) // { 0: 2, 1: 0, 2: 1, 3: 3, 4: Infinity }
