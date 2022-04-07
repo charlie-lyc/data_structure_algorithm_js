@@ -1,7 +1,7 @@
 const hashFunction = (string, max) => {
     // Start initializing: hash
-    // and use accumulating 'string.charCodeAt()'
-    // and use '%' and 'max'
+    // and accumulating 'string.charCodeAt()'
+    // and using '%' and 'max'
 
 }
 
@@ -19,11 +19,11 @@ class HashTable {
 
     }
 
-    remove(key) {
+    lookup(key) {
 
     }
 
-    lookup(key) {
+    remove(key) {
 
     }
 
