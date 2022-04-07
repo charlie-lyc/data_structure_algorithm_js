@@ -8,14 +8,27 @@
 `npm run test`<br>
 
 ## Test each case
+- Stack<br> 
 `npm run test:stack`<br>
+- Queue<br>
 `npm run test:queue`<br>
-`npm run test:priorityQueue`<br>
+- Priority Queue<br>
+`npm run test:pq`<br>
+- Set<br>
 `npm run test:set`<br>
-`npm run test:linkedList`<br>
-`npm run test:binaryTree`<br>
+- Hash Table<br>
+`npm run test:ht`<br>
+- Linked List<br>
+`npm run test:ll`<br>
+- Binary Search Tree<br>
+`npm run test:bst`<br>
+- Tree<br>
 `npm run test:tree`<br>
+- Trie<br>
 `npm run test:trie`<br>
-`npm run test:minHeap`<br>
-`npm run test:maxHeap`<br>
+- Min Heap<br>
+`npm run test:minh`<br>
+- Max Heap<br>
+`npm run test:maxh`<br>
+- Graph<br>
 `npm run test:graph`<br>
