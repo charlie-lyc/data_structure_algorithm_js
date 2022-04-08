@@ -124,8 +124,9 @@ describe('Data Structure: 06-LinkedList', () => {
         expect(() => linkedList.addAt()).not.toThrow()
     })
 
-    it('return false for the not given argument when add data at specific index', () => {
+    it('return false for the not given or one argument when add data at specific index', () => {
         expect(linkedList.addAt()).toBe(false)
+        expect(linkedList.addAt(1)).toBe(false)
     })
 
     it('return false when add data at specific index out of the range', () => {

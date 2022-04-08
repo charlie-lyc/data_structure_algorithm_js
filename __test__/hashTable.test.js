@@ -30,7 +30,7 @@ describe('Data Structure: 05-HashTable', () => {
         expect(() => ht.insert()).not.toThrow()
     })
 
-    it('return false for the not given two or one argument(s) when insert value', () => {
+    it('return false for the not given or one argument when insert value', () => {
         expect(ht.insert()).toBe(false)
         expect(ht.insert('beautiful')).toBe(false)
     })

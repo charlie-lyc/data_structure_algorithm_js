@@ -105,8 +105,8 @@ class Graph {
      * Breadth First Search(BFS) in Graph
      */
     /* Length of nodes from root node */
-    nodesLengthFrom(rootNode) {
-        if (rootNode === undefined || !this.hasNode(rootNode)) {
+    nodesLengthFrom(node) {
+        if (node === undefined || !this.hasNode(node)) {
             return null
         }
         const matrix = this.convertToMatrix()
@@ -117,8 +117,8 @@ class Graph {
              */
             nodesLength[i] = Infinity
         }
-        nodesLength[rootNode] = 0
-        const queue = [ rootNode ]
+        nodesLength[node] = 0
+        const queue = [ node ]
         let current
         while (queue.length !== 0) {
             current = queue.shift()
@@ -158,8 +158,8 @@ console.log(graph.removeNode(0))
 console.log(graph.removeEdge())
 console.log(graph.removeEdge(0))
 console.log(graph.removeEdge(0, 1))
-console.log(graph.lengthFrom())
-console.log(graph.lengthFrom(0))
+console.log(graph.nodesLengthFrom())
+console.log(graph.nodesLengthFrom(0))
 
 console.log(graph.addNode(0))
 console.log(graph.addNode(0))
@@ -167,7 +167,7 @@ console.log(graph.addNode(1))
 console.log(graph.addNode(2))
 console.log(graph.addNode(3))
 console.log(graph.addNode(4))
-console.log(graph.nodes)                 // { 0: [], 1: [], 2: [], 3: [], 4: [] }
+console.log(graph.nodes)              // { 0: [], 1: [], 2: [], 3: [], 4: [] }
 console.log(graph.addEdge(0, 1))
 console.log(graph.addEdge(0, 1))
 console.log(graph.addEdge(0, 2))
@@ -176,17 +176,122 @@ console.log(graph.addEdge(1, 2))
 console.log(graph.addEdge(2, 0))
 console.log(graph.addEdge(2, 1))
 console.log(graph.addEdge(4, 1))
-console.log(graph.nodes)                 // { 0: [1, 2, 3], 1: [2], 2: [0, 1], 3: [], 4: [1] }
+console.log(graph.nodes)              // { 0: [1, 2, 3], 1: [2], 2: [0, 1], 3: [], 4: [1] }
 
 console.log(graph.removeNode(4))
-console.log(graph.nodes)                 // { 0: [1, 2, 3], 1: [2], 2: [0, 1], 3: []}
+console.log(graph.nodes)              // { 0: [1, 2, 3], 1: [2], 2: [0, 1], 3: []}
 console.log(graph.removeEdge(2, 1)) 
-console.log(graph.nodes)                 // { 0: [1, 2, 3], 1: [2], 2: [0], 3: [] }
+console.log(graph.nodes)              // { 0: [1, 2, 3], 1: [2], 2: [0], 3: [] }
 
 graph.addNode(4)
 graph.addEdge(4, 1)
 graph.addEdge(2, 1)
-console.log(graph.nodes)                 // { 0: [1, 2, 3], 1: [2], 2: [0, 1], 3: [], 4: [1] }
+console.log(graph.nodes)              // { 0: [1, 2, 3], 1: [2], 2: [0, 1], 3: [], 4: [1] }
 
-console.log(graph.convertToMatrix())     // [ [0, 1, 1, 1, 0], [0, 0, 1, 0, 0], [1, 1, 0, 0, 0], [0, 0, 0, 1, 0], [0, 1, 0, 0, 0] ]
+console.log(graph.convertToMatrix())  // [ [0, 1, 1, 1, 0], [0, 0, 1, 0, 0], [1, 1, 0, 0, 0], [0, 0, 0, 1, 0], [0, 1, 0, 0, 0] ]
 console.log(graph.nodesLengthFrom(1)) // { 0: 2, 1: 0, 2: 1, 3: 3, 4: Infinity }
+console.log(graph.nodesLengthFrom(0)) // { 0: 0, 1: 1, 2: 1, 3: 1, 4: Infinity }
+console.log(graph.nodesLengthFrom(2)) // { 0: 1, 1: 1, 2: 0, 3: 2, 4: Infinity }
+console.log(graph.nodesLengthFrom(3)) // { 0: Infinity, 1: Infinity, 2: Infinity, 3: 0, 4: Infinity }
+console.log(graph.nodesLengthFrom(4)) // { 0: 3, 1: 1, 2: 2, 3: 4, 4: 0 }
+
+/////////////////////////////////////////////////////////////////
+/**
+ * Graph:
+ *  - Undirected Graphs: social-network
+ *  - Directed Graphs: internet
+ */
+
+/**
+ * Graph Representation:
+ *  - Adjacency List
+ *  - Adjacency Matrix
+ *  - Incidence Matrix
+ */
+
+/* Adjacency List Graph */
+// Nodes  a - b - c
+//
+// Node a: Node b
+// Node b: Node a, Node c
+// Node c: Node b
+// 
+// const undirectedGraph = {
+//     Node a: [ 'Node b' ],
+//     Node b: [ 'Node a', 'Node c'],
+//     Node c: [ 'Node b' ]
+// }
+//
+// Nodes   a - b - c
+// Number  0   1   2
+//
+// const undirectedGraphArray = {
+//     [1],   // Node a
+//     [0, 2],// Node b
+//     [1],   // Node c
+// }
+
+/* Adjacency Matrix Graph: Undirected */
+// Nodes    a - b - c
+//
+// Edge     a   b   c
+// Node a   0   1   0
+// Node b   1   0   1
+// Node c   0   1   0
+//
+// const adjacencyMatrixUndirected = [
+//     [ 0, 1, 0 ],
+//     [ 1, 0, 1 ],
+//     [ 0, 1, 0 ]
+// ]
+
+/* Adjacency Matrix Graph: Directed */
+// Nodes a <- b <- c
+//
+// const adjacencyMatrixDirected = [
+//     [ 0, 0, 0 ],
+//     [ 1, 0, 0 ],
+//     [ 0, 1, 0 ]
+// ]
+
+/* Incidence Matrix Graph: Undirected */
+//           1
+// Node a --------  Node b
+//      | \         /
+//   4 |   \ 3    / 2
+//    |     \   /
+// Node d   Node c
+//
+//    1  2  3  4
+// a  1  0  1  1
+// b  1  1  0  0
+// c  0  1  1  0
+// d  0  0  0  1
+//
+// const incidenceMatrixUndirected = [
+//     [1, 0, 1, 1],
+//     [1, 1, 0, 0],
+//     [0, 1, 1, 0],
+//     [0, 0, 0, 1]
+// ]
+
+/* Incidence Matrix Graph: Directed */
+//           1
+// Node a --------> Node b
+//     | ^         /
+//  4 |   \ 3    / 2
+//   v     \    v
+// Node d   Node c
+//
+//     1   2   3   4
+// a   1   0  -1   1
+// b  -1   1   0   0
+// c   0  -1   1   0
+// d   0   0   0  -1
+//
+// const incidenceMatrixDirected = [
+//     [ 1,  0, -1,  1],
+//     [-1,  1,  0,  0],
+//     [ 0, -1,  1,  0],
+//     [ 0,  0,  0, -1]
+// ]
